@@ -1,0 +1,287 @@
+.pricing-page {
+  @apply min-h-screen w-screen bg-white;
+
+  .af-container {
+    @apply flex w-full justify-center;
+  }
+
+  .af-box {
+    @apply w-[1440px] min-w-0 max-w-full px-[100px];
+    @apply max-xl:px-[4vw];
+  }
+
+  .section-1 {
+    @apply flex w-full flex-col items-center gap-[40px] bg-[#F5F5FA] pb-[110px] pt-[196px];
+    @apply max-sm:pb-[70px] max-sm:pt-[20vh];
+    .main-title {
+      @apply flex flex-col items-center gap-4 break-words text-center text-[56px] font-medium leading-[105%] text-[#101012];
+      @apply max-sm:px-[5vw] max-sm:text-[8vw] max-sm:leading-[120%];
+    }
+
+    .prices {
+      @apply w-[1100px] min-w-0 max-w-full;
+      .MuiTabs-indicator {
+        background-color: #350399;
+      }
+
+      .pricing-tab {
+        border-bottom: 1.5px solid #c5c5c5;
+        @apply flex flex-row items-center justify-center gap-2 pb-4 text-base font-medium opacity-50;
+        @apply max-sm:min-w-[60px] max-sm:gap-1 max-sm:px-2 max-sm:py-0 max-sm:text-sm;
+        .MuiTouchRipple-root {
+          display: none !important;
+        }
+
+        text-transform: capitalize;
+
+        &.selected {
+          @apply font-semibold text-black opacity-100;
+          border-color: #350399;
+        }
+      }
+
+      .tab-panel {
+        @apply flex flex-col gap-6;
+        @apply max-sm:flex-col;
+        .price {
+          border-color: rgba(213, 215, 222, 0.6);
+          @apply flex h-auto min-w-[230px] flex-1 flex-col gap-[30px] rounded-[16px] border bg-white p-10;
+          @apply max-sm:w-full;
+          &-label {
+            @apply text-[24px] font-medium leading-[120%] text-[#101012];
+          }
+
+          &-desc {
+            @apply text-base font-normal leading-[150%];
+          }
+
+          &-num {
+            @apply text-[40px] font-medium leading-[110%];
+          }
+
+          &-duration {
+            @apply h-[34px] whitespace-pre text-[12px] font-normal leading-[150%] text-[#101012] opacity-50;
+          }
+
+          &-content-title {
+            @apply mb-2 text-[16px] font-semibold;
+          }
+
+          &-content-item {
+            @apply flex gap-2;
+            > svg {
+              @apply mt-0.5;
+            }
+          }
+
+          .get-started-btn {
+            @apply rounded-[16px] border border-primary bg-white px-10 py-5 text-primary;
+          }
+
+          &.most-popular {
+            border-color: #350399;
+            position: relative;
+
+            &:after {
+              @apply absolute right-0 top-0 rounded-bl-[16px] rounded-tr-[16px] bg-[#350399] px-4 py-2 text-[12px] text-base font-semibold text-white;
+              content: 'Mais Popular';
+              font-weight: 500;
+            }
+
+            button {
+              @apply bg-[#6cb640] text-white;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .section-2 {
+    @apply flex flex-col items-center gap-[100px] bg-white py-[110px];
+    .main-title {
+      @apply flex flex-col items-center gap-5 break-words text-center text-[56px] font-medium leading-[105%] text-[#101012];
+      @apply max-sm:px-[5vw] max-sm:text-[8vw] max-sm:leading-[120%];
+    }
+
+    .subtitle {
+      @apply text-[24px] font-medium leading-[120%];
+    }
+
+    .cards {
+      @apply flex w-full flex-wrap gap-6;
+      @apply max-sm:w-full max-sm:flex-col max-sm:gap-10;
+      .card {
+        @apply flex min-w-[157px] flex-1 flex-col gap-6;
+        @apply max-sm:w-full max-sm:items-center max-sm:gap-4;
+        .desc {
+          @apply w-full overflow-hidden whitespace-pre-wrap break-words px-8 text-center text-[24px] font-medium leading-[120%] text-[#101012];
+          letter-spacing: -0.24px;
+          @apply max-lg:text-[16px];
+        }
+      }
+    }
+
+    .ai-cards {
+      @apply flex w-full flex-wrap justify-center gap-6;
+      .ai-card {
+        @apply flex flex-1 flex-col gap-[30px] p-10;
+        @apply max-lg:max-w-full;
+        border-radius: 15px;
+        border: 1px solid rgba(213, 215, 222, 0.7);
+        background: #fff;
+
+        &-title {
+          @apply text-[24px] font-medium leading-[120%];
+        }
+
+        &-desc {
+          @apply w-full text-left text-[16px] font-normal leading-[150%] text-[#101012];
+        }
+
+        &-num {
+          @apply text-[40px] font-medium leading-[110%];
+        }
+
+        &-duration {
+          @apply h-[34px] whitespace-pre text-[12px] font-normal leading-[150%] text-[#101012] opacity-50;
+        }
+
+        .ai-card-btn {
+          @apply mb-[14px] w-full rounded-[16px] border border-primary bg-white px-10 py-5 text-primary;
+        }
+
+        &-content-item {
+          @apply flex gap-2;
+        }
+      }
+    }
+  }
+
+  .scroll-icons .developers-logos .logo-wrapper .logo {
+    background: rgba(245, 245, 250, 1);
+  }
+
+  .section-3-container {
+    @apply relative overflow-hidden bg-[#200E34];
+    .glow {
+      position: absolute;
+      width: 200vw;
+      height: 100%;
+      left: 50%;
+      top: -10%;
+
+      transform: translate3d(-50%, -50%, 0px);
+      background: radial-gradient(
+        ellipse 2060px 1030px at center,
+        rgba(138, 44, 231, 0.4) 0%,
+        rgba(138, 44, 231, 0) 70%
+      );
+      filter: blur(250px);
+    }
+  }
+
+  .section-3 {
+    z-index: 10;
+    @apply flex flex-col items-center justify-center gap-[100px] py-[158px];
+    @apply max-md:min-h-fit max-md:gap-[60px] max-md:py-[10vh];
+
+    .title {
+      @apply flex items-center justify-center gap-[20px] text-center text-[56px] font-medium leading-[105%] text-white;
+      @apply max-md:text-[8vw];
+      letter-spacing: -1.68px;
+    }
+
+    .cards {
+      @apply flex w-full flex-wrap gap-6 px-[70px];
+      @apply max-lg:px-4 max-md:flex-col max-md:gap-10 max-md:px-4;
+      .card {
+        @apply flex flex-1 flex-col items-center justify-center rounded-[16px] border px-10 py-[50px];
+        border-color: rgba(255, 255, 255, 0.2);
+        @apply relative overflow-hidden bg-[#200E34];
+
+        .glow {
+          position: absolute;
+          width: 50%;
+          height: 100%;
+          left: 70%;
+
+          transform: translate3d(-50%, 50%, 0px);
+          background: radial-gradient(
+            ellipse 1030px 515px at center,
+            rgba(138, 44, 231, 0.4) 0%,
+            rgba(138, 44, 231, 0) 70%
+          );
+          filter: blur(120px);
+        }
+
+        .card-title {
+          z-index: 1;
+          @apply mb-6 mt-[24px] w-full text-center text-[24px] font-medium leading-[120%] text-white;
+        }
+
+        a {
+          @apply text-center text-[16px] font-normal leading-[150%] text-[#E0C4FF];
+          z-index: 1;
+        }
+      }
+    }
+  }
+
+  .section-4 {
+    @apply relative overflow-hidden;
+    background-color: #200e34;
+
+    .glow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 50%;
+      bottom: -100%;
+
+      transform: translate3d(-50%, -50%, 0px);
+      background: radial-gradient(ellipse 1030px 515px at center, rgba(138, 44, 231, 0.4) 0%, rgba(138, 44, 231, 0) 70%);
+      filter: blur(200px);
+    }
+
+    @apply flex w-full flex-col items-center justify-center gap-[100px] py-[50px];
+    @apply max-md:min-h-fit max-md:gap-[60px] max-md:py-[10vh];
+
+    .title {
+      z-index: 1;
+      @apply flex items-center justify-center text-center text-[56px] font-medium leading-[105%] text-white;
+      @apply max-md:text-[8vw];
+      letter-spacing: -1.68px;
+    }
+
+    .desc {
+      z-index: 1;
+      @apply max-w-[389px] text-center text-[16px] font-normal leading-[150%] text-white opacity-70;
+      letter-spacing: -0.16px;
+    }
+
+    .btns {
+      z-index: 1;
+      @apply mb-[6px] flex gap-4;
+      @apply max-sm:w-full max-sm:flex-col max-sm:px-4;
+      .download-btn {
+        @apply min-w-[174px] bg-white text-black;
+        @apply max-sm:w-full;
+        &:hover {
+          background: #f9f9fc;
+        }
+      }
+
+      .live-demo-btn {
+        @apply min-w-[174px];
+        border-radius: 15px;
+        border: 1px solid #e0c4ff;
+        @apply text-white;
+
+        &:hover {
+          border-color: #350399;
+        }
+      }
+    }
+  }
+}

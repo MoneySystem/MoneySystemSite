@@ -1,0 +1,115 @@
+export const yearlyPrice = [
+  {
+    label: 'Grátis',
+    desc: 'Mude o jogo da sua empresa',
+    price: 'R$0',
+    duration: 'Para sempre',
+    contentTitle: '',
+    content: [
+      'Gerenciamento de Estoque',
+      'Cadastro de Clientes',
+      'Cadastro de Produtos',
+      'Criação de Ordens de Serviço',
+      '1 Usuário',
+    ],
+  },
+  {
+    label: 'Prata',
+    desc: 'Teste grátis por 30 dias e veja os números da sua empresa',
+    price: 'R$1.200',
+    duration: 'Anual (Ganhe 2 Meses Grátis)',
+    contentTitle: 'Tudo do Plano Grátis e',
+    content: [
+      'Demonstração do Resultado do Exercício',
+      'Relatórios Completos',
+      'Agenda Básica',
+      'Contas a Pagar',
+      'Até 2 Usuários',
+    ],
+  },
+  {
+    label: 'Ouro',
+    desc: 'Para você que quer crescer e expandir o seu negócio',
+    price: 'R$1.800',
+    duration: 'Anual (Ganhe 2 Meses Grátis)',
+    contentTitle: 'Tudo do Plano Prata e',
+    content: ['Emissão de Notas Fiscais', 'Previsão de Vendas', 'Agenda Inteligente', 'Até 5 usuários'],
+    isMostPopular: true,
+  },
+  {
+    label: 'Diamante',
+    desc: 'Para empresas que buscam uma solução completa e personalizada',
+    price: 'R$4.250',
+    duration: 'Anual (Ganhe 2 Meses Grátis)',
+    contentTitle: 'Tudo do Plano Ouro e',
+    content: [
+      'Suporte Prioritário 24/7',
+      'Treinamento Especializado',
+      'Consultoria Personalizada',
+      'Usuários Ilimitados',
+    ],
+  },
+  {
+    label: 'Distribuidoras',
+    desc: 'Solução completa para distribuidoras de todos os portes',
+    price: 'R$7.900',
+    duration: 'Anual (Ganhe 2 Meses Grátis)',
+    contentTitle: 'Tudo do Plano Diamante e',
+    content: [
+      'Consultor à sua Disposição',
+      'Gerenciamento de Rotas',
+      'Controle de Frota',
+      'Integração com Outros Sistemas',
+      'Gerador de Manifesto de Transporte',
+      'Dashboard Personalizado',
+      'Módulo de Análise de Mercado',
+    ],
+  },
+  {
+    label: 'Customizado',
+    desc: 'Solução sob medida para necessidades específicas do seu negócio',
+    price: 'A orçar',
+    duration: 'Personalizado',
+    contentTitle: 'Todos os recursos disponíveis e',
+    content: [
+      'Desenvolvimento de Funcionalidades Exclusivas',
+      'Infraestrutura Dedicada',
+      'Consultoria Empresarial',
+      'Transferência de Banco de Dados',
+      'Acompanhamento de Implantação',
+    ],
+  },
+];
+
+export const monthlyPrice = [
+  {
+    ...yearlyPrice[0],
+    price: 'R$0',
+    duration: 'Para sempre',
+  },
+  {
+    ...yearlyPrice[1],
+    price: 'R$120',
+    duration: 'Mensal',
+  },
+  {
+    ...yearlyPrice[2],
+    price: 'R$180',
+    duration: 'Mensal',
+  },
+  {
+    ...yearlyPrice[3],
+    price: 'R$425',
+    duration: 'Mensal',
+  },
+  {
+    ...yearlyPrice[4],
+    price: 'R$790',
+    duration: 'Mensal',
+  },
+  {
+    ...yearlyPrice[5],
+    price: 'A orçar',
+    duration: 'Personalizado',
+  },
+];
