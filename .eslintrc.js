@@ -8,6 +8,7 @@ module.exports = {
     'no-duplicate-imports': 'error',
     '@next/next/no-img-element': 'off',
     '@typescript-eslint/no-empty-function': 'error',
+    '@typescript-eslint/no-unused-vars': 'off',
     'padding-line-between-statements': [
       'warn',
       { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
