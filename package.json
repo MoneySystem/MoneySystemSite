@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "NEXT_DISABLE_ESLINT=1 NEXT_DISABLE_TYPE_CHECKS=1 NEXT_TELEMETRY_DISABLED=1 NEXT_IGNORE_TYPE_ERROR=1 ./node_modules/.bin/next build --no-lint",
+    "build": "NEXT_DISABLE_ESLINT=1 NEXT_DISABLE_TYPE_CHECKS=1 NEXT_TELEMETRY_DISABLED=1 NEXT_IGNORE_TYPE_ERROR=1 pnpm next build --no-lint",
     "start": "next start",
     "lint": "next lint --quiet",
     "format:write": "prettier --write \"**/*.{css,js,json,jsx,ts,tsx}\"",
