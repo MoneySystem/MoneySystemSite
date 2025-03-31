@@ -74,8 +74,7 @@ function AiExamples() {
       </TabPanel>
       <TabPanel value={value} index={'write'}>
         <div className={'panel-title'}>
-          Com base no seu faturamento, <span className={'text-[#6cb640]'}>saiba a previsão futura da sua loja</span> (Em
-          breve)
+          Com base no seu faturamento, <span className={'text-[#6cb640]'}>saiba a previsão futura da sua loja</span>
         </div>
         <div className={'panel-image'}>
           <Image

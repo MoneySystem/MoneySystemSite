@@ -39,7 +39,7 @@ function Communities() {
             </div>
           </div>
           <Link
-            href={'https://moneysystem.com.br/essential-documentation/readme/welcome-to-appflowy'}
+            href={'https://api.whatsapp.com/send?phone=5548988745520&text=Ol%C3%A1!%20Tenho%20interesse%20no%20MoneySystem'}
             target={'_blank'}
             className={'community-btn'}
           >

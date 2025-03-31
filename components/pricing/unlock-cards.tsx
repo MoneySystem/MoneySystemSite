@@ -1,11 +1,8 @@
 'use client';
 
-import AI1 from '@/assets/images/pricing/ai-1.png';
 import { Tick } from '@/components/pricing/icons';
-import Image from 'next/image';
 import Link from 'next/link';
 import React, { useCallback } from 'react';
-import AI2 from '@/assets/images/pricing/ai-2.png';
 
 function UnlockCards() {
   const renderCard = useCallback(
@@ -35,35 +32,6 @@ function UnlockCards() {
     ),
     []
   );
-
-  const cards = [
-    {
-      icon: <Image src={AI1} alt="AI 1" width={48} height={48} />,
-      title: 'AI Assistant',
-      desc: 'Get instant answers to your questions',
-      num: '1',
-      duration: 'month',
-      content: [
-        '24/7 support',
-        'Instant answers',
-        'Smart suggestions',
-        'Custom training'
-      ]
-    },
-    {
-      icon: <Image src={AI2} alt="AI 2" width={48} height={48} />,
-      title: 'Advanced AI',
-      desc: 'Unlock all AI features',
-      num: '3',
-      duration: 'months',
-      content: [
-        'All AI Assistant features',
-        'Advanced analytics',
-        'Priority support',
-        'Custom integrations'
-      ]
-    }
-  ];
 
   return (
     <div className="flex flex-col gap-4">

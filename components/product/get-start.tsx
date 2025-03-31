@@ -25,14 +25,6 @@ function GetStart() {
           >
             Suporte WhatsApp
           </Link>
-          {!isMobile && (
-            <Link
-              className={'live-demo-btn'}
-              href={webApplicationUrl}
-            >
-              Testar agora
-            </Link>
-          )}
         </div>
       </div>
     </div>
