@@ -1,9 +1,9 @@
 {
   "version": 2,
-  "buildCommand": "NEXT_DISABLE_ESLINT=1 NEXT_DISABLE_TYPE_CHECKS=1 NEXT_TELEMETRY_DISABLED=1 NEXT_IGNORE_TYPE_ERROR=1 pnpm build",
+  "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "framework": "nextjs",
-  "installCommand": "pnpm install --no-frozen-lockfile",
+  "installCommand": "npm install --legacy-peer-deps",
   "builds": [
     {
       "src": "package.json",
@@ -18,4 +18,4 @@
       }
     }
   ]
-}
+} 
