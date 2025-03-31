@@ -3,19 +3,5 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "framework": "nextjs",
-  "installCommand": "npm install --legacy-peer-deps",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next",
-      "config": {
-        "typescript": {
-          "ignoreBuildErrors": true
-        },
-        "eslint": {
-          "ignoreDuringBuilds": true
-        }
-      }
-    }
-  ]
-} 
+  "installCommand": "npm install --legacy-peer-deps"
+}
