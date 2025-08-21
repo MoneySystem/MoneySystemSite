@@ -35,10 +35,10 @@ function MainDownload({ showDesc = true }: { showDesc?: boolean }) {
         className={'flex-1'}
         size={'2xl'}
         onClick={() => {
-          // Redireciona para a página /pricing
-          window.location.href = '/pricing';
+          // Redireciona para a página de cadastro do MoneySystem
+          window.open('https://app.moneysystem.com.br/index.php/cadastro', '_blank');
 
-          // Se você ainda quiser coletar eventos, pode deixar isso aqui
+          // Coleta evento de clique
           collectEvent(EventName.homePageDownloadBtn, {
             type: 'click',
           });
