@@ -31,7 +31,7 @@ function Communities() {
         <div className={'community-content-summary'}>
           <div className={'flex flex-col gap-4'}>
             <div className={'community-content-summary-title'}>
-              Um sistema pensado especialmente para lojas de películas
+              Gestão descomplicada para quem quer mais resultados
             </div>
             <div className={'community-content-summary-desc'}>
               Maximize o Gerenciamento Financeiro da Sua Empresa com o MoneySystem. Acesse de qualquer lugar, a qualquer

@@ -16,7 +16,7 @@ export const yearlyPrice = [
   {
     label: 'Prata',
     desc: 'Teste grátis por 30 dias e veja os números da sua empresa',
-    price: 'R$1.200',
+    price: 'R$2.400',
     duration: 'Anual (Ganhe 2 Meses Grátis)',
     contentTitle: 'Tudo do Plano Grátis e',
     content: [
@@ -30,7 +30,7 @@ export const yearlyPrice = [
   {
     label: 'Ouro',
     desc: 'Para você que quer crescer e expandir o seu negócio',
-    price: 'R$1.800',
+    price: 'R$3.600',
     duration: 'Anual (Ganhe 2 Meses Grátis)',
     contentTitle: 'Tudo do Plano Prata e',
     content: ['Emissão de Notas Fiscais', 'Previsão de Vendas', 'Agenda Inteligente', 'Até 5 usuários'],
@@ -39,7 +39,7 @@ export const yearlyPrice = [
   {
     label: 'Diamante',
     desc: 'Para empresas que buscam uma solução completa e personalizada',
-    price: 'R$4.250',
+    price: 'R$8.500',
     duration: 'Anual (Ganhe 2 Meses Grátis)',
     contentTitle: 'Tudo do Plano Ouro e',
     content: [
@@ -52,7 +52,7 @@ export const yearlyPrice = [
   {
     label: 'Distribuidoras',
     desc: 'Solução completa para distribuidoras de todos os portes',
-    price: 'R$7.900',
+    price: 'R$15.800',
     duration: 'Anual (Ganhe 2 Meses Grátis)',
     contentTitle: 'Tudo do Plano Diamante e',
     content: [
@@ -89,22 +89,22 @@ export const monthlyPrice = [
   },
   {
     ...yearlyPrice[1],
-    price: 'R$120',
+    price: 'R$240',
     duration: 'Mensal',
   },
   {
     ...yearlyPrice[2],
-    price: 'R$180',
+    price: 'R$360',
     duration: 'Mensal',
   },
   {
     ...yearlyPrice[3],
-    price: 'R$425',
+    price: 'R$850',
     duration: 'Mensal',
   },
   {
     ...yearlyPrice[4],
-    price: 'R$790',
+    price: 'R$1.580',
     duration: 'Mensal',
   },
   {

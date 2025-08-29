@@ -28,7 +28,7 @@ export default function Page() {
               Mais tempo <span className={'text-primary'}>para você.</span> Mais resultado para a{' '}
               <span className={'text-primary'}>sua empresa.</span>
             </h1>
-            <div className={'desc'}>O 1º software de gestão exclusivo para o mercado de películas!</div>
+            <div className={'desc'}>O software de gestão inteligente para o crescimento do seu negócio!</div>
           </div>
           <MainDownload />
           <div className={'flex flex-col items-center gap-4'}>

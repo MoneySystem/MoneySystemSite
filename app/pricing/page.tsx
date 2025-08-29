@@ -36,7 +36,7 @@ function Page() {
               <div className={'text-primary'}>melhor investimento!</div>
             </div>
             <div className={'subtitle'}>
-              <div>Use nosso sistema gratuitamente por 30 dias, sem informar dados de pagamento.</div>
+              <div>Use nosso cupom SETEMBRO50 e obtenha 50% de desconto vitalício em qualquer plano.</div>
             </div>
             <Prices />
           </div>

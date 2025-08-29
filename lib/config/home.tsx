@@ -301,7 +301,7 @@ export const communityConfig = {
       },
     },
     {
-      title: 'Um sistema pensado especialmente para lojas de películas',
+      title: 'Gestão descomplicada para quem quer mais resultados',
       content:
         'Maximize o Gerenciamento Financeiro da Sua Empresa com o MoneySystem. Acesse de qualquer lugar, a qualquer hora.',
       btnText: 'Developer Docs',
