@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { webPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Termos de Uso e Política de Privacidade",
@@ -27,6 +29,17 @@ const sections = [
 ] as const;
 
 export default function TermsPage() {
+  const structuredData = webPageSchema({
+    path: "/termos",
+    name: "Termos de Uso e Política de Privacidade",
+    description:
+      "Termos de uso do MoneySystem e informações sobre tratamento de dados pessoais.",
+    breadcrumbs: [
+      { name: "Início", path: "/" },
+      { name: "Termos e Privacidade" },
+    ],
+  });
+
   return (
     <>
       <SiteHeader />
@@ -314,6 +327,7 @@ export default function TermsPage() {
         </div>
       </main>
       <SiteFooter />
+      <JsonLd data={structuredData} />
     </>
   );
 }

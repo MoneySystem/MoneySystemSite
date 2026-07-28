@@ -3,9 +3,11 @@ import Link from "next/link";
 
 import { ArrowIcon } from "@/components/ArrowIcon";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { helpErrors } from "@/content/help";
+import { collectionPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Erros frequentes — Central de Ajuda",
@@ -15,6 +17,23 @@ export const metadata: Metadata = {
 };
 
 export default function HelpErrorsPage() {
+  const structuredData = collectionPageSchema({
+    path: "/ajuda/erros",
+    name: "Erros frequentes — Central de Ajuda MoneySystem",
+    description:
+      "Diagnóstico para rejeições fiscais, certificado digital, emissão de NF-e, estoque e tributação no MoneySystem.",
+    breadcrumbs: [
+      { name: "Início", path: "/" },
+      { name: "Central de Ajuda", path: "/ajuda" },
+      { name: "Erros frequentes" },
+    ],
+    items: helpErrors.map((article) => ({
+      name: article.title,
+      path: `/ajuda/erros/${article.slug}`,
+      description: article.summary,
+    })),
+  });
+
   return (
     <>
       <SiteHeader />
@@ -57,6 +76,7 @@ export default function HelpErrorsPage() {
         </section>
       </main>
       <SiteFooter />
+      <JsonLd data={structuredData} />
     </>
   );
 }

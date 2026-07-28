@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Instrument_Sans } from "next/font/google";
 
 import { JsonLd } from "@/components/JsonLd";
+import { siteEntityGraph } from "@/lib/schema";
 import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/site";
 
 import "./globals.css";
@@ -86,20 +87,7 @@ export default function RootLayout({
           Pular para o conteúdo
         </a>
         {children}
-        <JsonLd
-          data={{
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            name: SITE_NAME,
-            url: SITE_URL,
-            logo: absoluteUrl("/logo.svg"),
-            contactPoint: {
-              "@type": "ContactPoint",
-              contactType: "customer service",
-              availableLanguage: "Portuguese",
-            },
-          }}
-        />
+        <JsonLd data={siteEntityGraph()} />
       </body>
     </html>
   );

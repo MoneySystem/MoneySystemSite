@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { ArrowIcon } from "@/components/ArrowIcon";
 import { Logo } from "@/components/Logo";
 import { WhatsAppCta } from "@/components/WhatsAppCta";
@@ -17,9 +15,9 @@ export function SiteHeader() {
 
         <nav className="site-header__nav" aria-label="Navegação principal">
           {NAVIGATION.map((item) => (
-            <Link href={item.href} key={item.href}>
+            <a href={item.href} key={item.href}>
               {item.label}
-            </Link>
+            </a>
           ))}
         </nav>
 
@@ -50,10 +48,10 @@ export function SiteHeader() {
           <div className="mobile-menu__panel">
             <nav aria-label="Navegação móvel">
               {NAVIGATION.map((item) => (
-                <Link href={item.href} key={item.href}>
+                <a href={item.href} key={item.href}>
                   <span>{item.label}</span>
                   <ArrowIcon />
-                </Link>
+                </a>
               ))}
             </nav>
             <a className="mobile-menu__login" href={LOGIN_URL}>

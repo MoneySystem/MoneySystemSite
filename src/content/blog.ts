@@ -1,6 +1,7 @@
 import type { BlogPost } from "./types";
+import { evergreenBlogPosts } from "./evergreen-blog";
 
-export const blogPosts: BlogPost[] = [
+const existingBlogPosts: BlogPost[] = [
   {
     slug: "2025-11-05-moneysystem-erp-completo-para-pequenas-empresas",
     title: "MoneySystem: O ERP Completo que Sua Empresa Precisa",
@@ -10,6 +11,12 @@ export const blogPosts: BlogPost[] = [
     author: "Ney Moraes",
     categories: ["Gestão Empresarial", "Tecnologia"],
     readingTime: "6 min de leitura",
+    relatedSlugs: [
+      "o-que-e-erp",
+      "como-funciona-um-erp",
+      "como-escolher-um-erp",
+      "como-organizar-uma-empresa",
+    ],
     sections: [
       {
         heading: "O problema não é a falta de informação",
@@ -61,6 +68,12 @@ export const blogPosts: BlogPost[] = [
     author: "Ney Moraes",
     categories: ["Cases de Sucesso", "Mercado de Películas"],
     readingTime: "5 min de leitura",
+    relatedSlugs: [
+      "2025-03-12-sistema-para-mercado-de-peliculas",
+      "como-organizar-uma-empresa",
+      "como-controlar-estoque",
+      "como-organizar-ordens-de-servico",
+    ],
     sections: [
       {
         heading: "Experiência de mercado e uma rotina cada vez maior",
@@ -104,6 +117,11 @@ export const blogPosts: BlogPost[] = [
     author: "Ney Moraes",
     categories: ["Gestão Financeira", "Empreendedorismo"],
     readingTime: "7 min de leitura",
+    relatedSlugs: [
+      "como-controlar-fluxo-de-caixa",
+      "como-organizar-uma-empresa",
+      "2025-03-14-5-erros-financeiros",
+    ],
     sections: [
       {
         heading: "Pró-labore não é retirada livre",
@@ -153,6 +171,11 @@ export const blogPosts: BlogPost[] = [
     author: "Ney Moraes",
     categories: ["Gestão Financeira", "Mercado de Películas"],
     readingTime: "6 min de leitura",
+    relatedSlugs: [
+      "como-controlar-fluxo-de-caixa",
+      "como-controlar-estoque",
+      "2025-03-15-pro-labore-empresarios-mercado-peliculas",
+    ],
     sections: [
       {
         heading: "1. Misturar dinheiro pessoal e empresarial",
@@ -197,6 +220,12 @@ export const blogPosts: BlogPost[] = [
     author: "Ney Moraes",
     categories: ["Sistemas para Empresas", "Mercado de Películas"],
     readingTime: "5 min de leitura",
+    relatedSlugs: [
+      "como-organizar-ordens-de-servico",
+      "como-controlar-estoque",
+      "como-emitir-nota-fiscal",
+      "2025-08-22-lunarfilm-35-anos-transformacao-gestao-moneysystem",
+    ],
     sections: [
       {
         heading: "Um serviço movimenta várias áreas",
@@ -230,6 +259,42 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+];
+
+function materializeEvergreenPost(
+  post: (typeof evergreenBlogPosts)[number],
+): BlogPost {
+  return {
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    shortAnswer: post.shortAnswer,
+    publishedAt: post.publishedAt,
+    updatedAt: post.updatedAt,
+    author: post.author,
+    categories: [...post.categories],
+    readingTime: post.readingTime,
+    entities: [...post.entities],
+    relatedSlugs: [...post.relatedSlugs],
+    faqs: post.faqs.map((faq) => ({
+      question: faq.question,
+      answer: faq.answer,
+    })),
+    sections: post.sections.map((section) => ({
+      heading: section.heading,
+      ...("paragraphs" in section
+        ? { paragraphs: [...section.paragraphs] }
+        : {}),
+      ...("bullets" in section ? { bullets: [...section.bullets] } : {}),
+      ...("numbered" in section ? { numbered: [...section.numbered] } : {}),
+      ...("note" in section ? { note: section.note } : {}),
+    })),
+  };
+}
+
+export const blogPosts: BlogPost[] = [
+  ...evergreenBlogPosts.map(materializeEvergreenPost),
+  ...existingBlogPosts,
 ];
 
 export function getBlogPost(slug: string) {

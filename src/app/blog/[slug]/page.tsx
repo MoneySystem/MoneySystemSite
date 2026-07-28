@@ -10,10 +10,14 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { WhatsAppCta } from "@/components/WhatsAppCta";
 import { blogPosts, getBlogPost } from "@/content/blog";
+import type { ContentSection } from "@/content/types";
 import {
-  HOME_WHATSAPP_MESSAGE,
-  absoluteUrl,
-} from "@/lib/site";
+  articleSchema,
+  combineSchemaGraphs,
+  faqSchema,
+  articleId,
+} from "@/lib/schema";
+import { HOME_WHATSAPP_MESSAGE, absoluteUrl } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -38,10 +42,20 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getBlogPost(slug);
   if (!post) return {};
+  const isNeyMoraes = post.author === "Ney Moraes";
 
   return {
     title: post.title,
     description: post.excerpt,
+    keywords: post.entities,
+    authors: [
+      isNeyMoraes
+        ? {
+            name: post.author,
+            url: absoluteUrl("/autores/ney-moraes"),
+          }
+        : { name: post.author },
+    ],
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
       type: "article",
@@ -60,8 +74,95 @@ export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
   const post = getBlogPost(slug);
   if (!post) notFound();
+  const isNeyMoraes = post.author === "Ney Moraes";
 
-  const related = blogPosts.filter((item) => item.slug !== post.slug).slice(0, 2);
+  const path = `/blog/${post.slug}`;
+  const breadcrumbs = [
+    { name: "Início", path: "/" },
+    { name: "Blog", path: "/blog" },
+    { name: post.title },
+  ];
+  const related = post.relatedSlugs?.length
+    ? post.relatedSlugs.flatMap((relatedSlug) => {
+        const relatedPost = getBlogPost(relatedSlug);
+        return relatedPost ? [relatedPost] : [];
+      })
+    : blogPosts.filter((item) => item.slug !== post.slug).slice(0, 3);
+  const visibleSections: ContentSection[] = [
+    ...(post.shortAnswer
+      ? [
+          {
+            heading: "Resposta direta",
+            paragraphs: [post.shortAnswer],
+          },
+        ]
+      : []),
+    ...post.sections,
+    ...(post.faqs?.length
+      ? [
+          {
+            heading: "Perguntas frequentes",
+            paragraphs: [
+              "Respostas objetivas para as dúvidas mais comuns sobre este tema.",
+            ],
+          },
+          ...post.faqs.map((faq) => ({
+            heading: faq.question,
+            paragraphs: [faq.answer],
+          })),
+        ]
+      : []),
+  ];
+  const howToSections = post.shortAnswer
+    ? post.sections.filter((section) => section.numbered?.length)
+    : [];
+  const howToId = `${absoluteUrl(path)}#howto`;
+  const articleStructuredData = articleSchema({
+    path,
+    type: "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt ?? post.publishedAt,
+    author: isNeyMoraes
+      ? {
+          type: "Person",
+          slug: "ney-moraes",
+          name: post.author,
+        }
+      : { type: "Organization" },
+    breadcrumbs,
+    keywords: post.entities ?? post.categories,
+    hasPartIds: howToSections.length ? [howToId] : undefined,
+  });
+  const howToStructuredData = howToSections.length
+    ? {
+        "@type": "HowTo",
+        "@id": howToId,
+        name:
+          howToSections.length === 1
+            ? howToSections[0].heading
+            : `Passo a passo: ${post.title}`,
+        description: post.shortAnswer ?? post.excerpt,
+        inLanguage: "pt-BR",
+        isPartOf: { "@id": articleId(path) },
+        step: howToSections.map((section) => ({
+          "@type": "HowToSection",
+          name: section.heading,
+          itemListElement: (section.numbered ?? []).map((step, index) => ({
+            "@type": "HowToStep",
+            position: index + 1,
+            name: step,
+            text: step,
+          })),
+        })),
+      }
+    : null;
+  const structuredData = combineSchemaGraphs(
+    articleStructuredData,
+    ...(post.faqs?.length ? [faqSchema(path, post.faqs)] : []),
+    ...(howToStructuredData ? [howToStructuredData] : []),
+  );
 
   return (
     <>
@@ -85,10 +186,25 @@ export default async function BlogPostPage({ params }: PageProps) {
               <h1>{post.title}</h1>
               <p className="article-hero__excerpt">{post.excerpt}</p>
               <div className="post-meta post-meta--hero">
-                <span>Por {post.author}</span>
+                <span>
+                  Por{" "}
+                  {isNeyMoraes ? (
+                    <Link href="/autores/ney-moraes">{post.author}</Link>
+                  ) : (
+                    post.author
+                  )}
+                </span>
                 <time dateTime={post.publishedAt}>
                   {formatDate(post.publishedAt)}
                 </time>
+                {post.updatedAt ? (
+                  <span>
+                    Atualizado em{" "}
+                    <time dateTime={post.updatedAt}>
+                      {formatDate(post.updatedAt)}
+                    </time>
+                  </span>
+                ) : null}
                 <span>{post.readingTime}</span>
               </div>
             </div>
@@ -100,7 +216,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               <div />
               <small>Gestão empresarial</small>
             </div>
-            <ArticleBody sections={post.sections} />
+            <ArticleBody sections={visibleSections} />
           </div>
         </article>
 
@@ -145,29 +261,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         </section>
       </main>
       <SiteFooter />
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          headline: post.title,
-          description: post.excerpt,
-          datePublished: post.publishedAt,
-          dateModified: post.updatedAt ?? post.publishedAt,
-          author: {
-            "@type": "Person",
-            name: post.author,
-          },
-          publisher: {
-            "@type": "Organization",
-            name: "MoneySystem",
-            logo: {
-              "@type": "ImageObject",
-              url: absoluteUrl("/logo.svg"),
-            },
-          },
-          mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
-        }}
-      />
+      <JsonLd data={structuredData} />
     </>
   );
 }

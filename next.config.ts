@@ -55,6 +55,13 @@ const nextConfig: NextConfig = {
         destination: "/solucoes/automotivo",
         permanent: true,
       },
+      {
+        source:
+          "/blog/2025-08-21-moneysystem-erp-completo-para-pequenas-empresas",
+        destination:
+          "/blog/2025-11-05-moneysystem-erp-completo-para-pequenas-empresas",
+        permanent: true,
+      },
     ];
   },
   async headers() {

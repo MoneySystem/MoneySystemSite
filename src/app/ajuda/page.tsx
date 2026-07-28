@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ArrowIcon } from "@/components/ArrowIcon";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { HelpSearch } from "@/components/HelpSearch";
+import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { blogPosts } from "@/content/blog";
@@ -11,6 +13,7 @@ import {
   helpCategories,
   helpErrors,
 } from "@/content/help";
+import { collectionPageSchema } from "@/lib/schema";
 import { createWhatsAppUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -21,6 +24,30 @@ export const metadata: Metadata = {
 };
 
 export default function HelpCenterPage() {
+  const structuredData = collectionPageSchema({
+    path: "/ajuda",
+    name: "Central de Ajuda MoneySystem",
+    description:
+      "Encontre respostas sobre implantação, cadastros, estoque, vendas, notas fiscais, financeiro, serviços e configurações do MoneySystem.",
+    breadcrumbs: [
+      { name: "Início", path: "/" },
+      { name: "Central de Ajuda" },
+    ],
+    items: [
+      {
+        name: "Erros frequentes",
+        path: "/ajuda/erros",
+        description:
+          "Diagnóstico para rejeições fiscais, certificado digital, emissão de NF-e, estoque e tributação.",
+      },
+      ...helpCategories.map((category) => ({
+        name: category.title,
+        path: `/ajuda/categoria/${category.slug}`,
+        description: category.description,
+      })),
+    ],
+  });
+
   const searchItems = [
     ...helpArticles.map((article) => {
       const category = helpCategories.find(
@@ -49,6 +76,12 @@ export default function HelpCenterPage() {
       <main id="conteudo">
         <section className="help-hero">
           <div className="container help-hero__inner">
+            <Breadcrumbs
+              items={[
+                { label: "Início", href: "/" },
+                { label: "Central de Ajuda" },
+              ]}
+            />
             <p className="eyebrow eyebrow--bright">Central de Ajuda</p>
             <h1>Encontre a resposta. Continue o trabalho.</h1>
             <p>
@@ -166,6 +199,7 @@ export default function HelpCenterPage() {
         </section>
       </main>
       <SiteFooter />
+      <JsonLd data={structuredData} />
     </>
   );
 }

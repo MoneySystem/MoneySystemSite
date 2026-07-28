@@ -7,7 +7,8 @@ import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { getHelpError, helpErrors } from "@/content/help";
-import { absoluteUrl, createWhatsAppUrl } from "@/lib/site";
+import { articleSchema } from "@/lib/schema";
+import { createWhatsAppUrl } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -35,6 +36,22 @@ export default async function HelpErrorArticlePage({ params }: PageProps) {
   const { slug } = await params;
   const article = getHelpError(slug);
   if (!article) notFound();
+  const path = `/ajuda/erros/${article.slug}`;
+  const structuredData = articleSchema({
+    path,
+    type: "TechArticle",
+    headline: article.title,
+    description: article.summary,
+    dateModified: article.updatedAt,
+    author: { type: "Organization" },
+    keywords: article.keywords,
+    breadcrumbs: [
+      { name: "Início", path: "/" },
+      { name: "Central de Ajuda", path: "/ajuda" },
+      { name: "Erros frequentes", path: "/ajuda/erros" },
+      { name: article.title },
+    ],
+  });
 
   return (
     <>
@@ -92,17 +109,7 @@ export default async function HelpErrorArticlePage({ params }: PageProps) {
         </section>
       </main>
       <SiteFooter />
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "TechArticle",
-          headline: article.title,
-          description: article.summary,
-          dateModified: article.updatedAt,
-          author: { "@type": "Organization", name: "MoneySystem" },
-          mainEntityOfPage: absoluteUrl(`/ajuda/erros/${article.slug}`),
-        }}
-      />
+      <JsonLd data={structuredData} />
     </>
   );
 }

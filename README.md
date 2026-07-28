@@ -1,7 +1,9 @@
 # MoneySystem Site
 
-Site institucional, solução automotiva, landing `/ad`, blog e Central de Ajuda
-do MoneySystem. Construído com Next.js App Router e preparado para a Vercel.
+Site institucional e base de conhecimento do MoneySystem. Reúne a Home,
+landing `/ad`, guia de ERP, recursos, soluções por segmento, blog, Central de
+Ajuda e páginas institucionais. Construído com Next.js App Router e preparado
+para a Vercel.
 
 ## Requisitos
 
@@ -59,18 +61,33 @@ Ou execute tudo com:
 npm run check
 ```
 
+## Conteúdo, SEO e GEO
+
+- `/erp` funciona como guia central sobre sistemas de gestão empresarial.
+- `/recursos` explica financeiro, estoque, emissão fiscal, vendas, DRE e ordens
+  de serviço.
+- `/solucoes` organiza páginas por segmento e porte da empresa.
+- `/blog` reúne artigos com respostas diretas, FAQ, relações temáticas e RSS.
+- `/ajuda` contém documentação prática e erros frequentes.
+- `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt` e os grafos JSON-LD
+  são gerados ou servidos sem depender de interação no navegador.
+- O conteúdo principal é pré-renderizado em HTML. Schemas só são usados quando
+  correspondem a conteúdo visível.
+
 ## Rotas canônicas e legadas
 
 - `/terms` → `/termos` (308)
 - `/anuncios` → `/ad` (308, preserva query string)
 - `/automotivo` → `/solucoes/automotivo` (308)
+- O antigo slug de 21/08/2025 do artigo de ERP redireciona para o slug canônico.
 - `/obrigado` não existe e retorna 404
 - `/ad` usa `noindex, follow` e não entra no sitemap
 
 ## Publicação na Vercel
 
 1. Importe este repositório como projeto Next.js.
-2. Configure as quatro variáveis na Vercel.
+2. Configure as três variáveis necessárias e, se usar a versão aprimorada do
+   Apps Script, também `GOOGLE_APPS_SCRIPT_SECRET`.
 3. Rode um deployment de Preview.
 4. Teste o fluxo com um lead canário claramente identificado.
 5. Confirme que apenas uma linha foi criada na planilha e que o WhatsApp abriu.

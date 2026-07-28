@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 type LogoProps = {
   href?: string | null;
@@ -31,12 +30,12 @@ export function Logo({
   }
 
   return (
-    <Link
+    <a
       className={`brand-logo ${className}`.trim()}
       href={href}
       aria-label="MoneySystem — página inicial"
     >
       {image}
-    </Link>
+    </a>
   );
 }

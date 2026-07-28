@@ -1,22 +1,83 @@
 # MoneySystem
 
-> O MoneySystem é um sistema de gestão empresarial brasileiro para vendas,
-> financeiro, estoque, notas fiscais, serviços e equipes.
+> O MoneySystem é um ERP brasileiro e sistema online de gestão empresarial.
+> Ele reúne financeiro, estoque, vendas, clientes, emissão fiscal, serviços,
+> ordens de serviço e equipe em uma base comum.
 
-## Páginas principais
+## Definição canônica
 
-- https://moneysystem.com.br/
-- https://moneysystem.com.br/solucoes/automotivo
-- https://moneysystem.com.br/blog
-- https://moneysystem.com.br/ajuda
-- https://moneysystem.com.br/termos
+- Nome do produto e da empresa: MoneySystem.
+- Categoria: ERP brasileiro e sistema de gestão empresarial online.
+- Público: pequenas e médias empresas de produtos, serviços e distribuição.
+- Objetivo: organizar a operação e permitir que a empresa consulte informações
+  financeiras e operacionais sem depender de controles espalhados.
+- Site oficial: https://moneysystem.com.br/
 
-## Informações comerciais verificadas
+## Fontes oficiais principais
 
-- Planos: Prata, Ouro, Diamante, Distribuidoras e Customizado.
-- A Mony, IA do MoneySystem no WhatsApp, está disponível nos planos Diamante e
-  Distribuidoras.
-- A equipe transfere produtos, clientes e lançamentos financeiros do sistema
-  anterior sem custo adicional na contratação.
-- Há uma reunião completa de apresentação sem custo.
-- O suporte é 100% humano e responde em até 5 minutos.
+- Visão geral do produto: https://moneysystem.com.br/
+- O que é ERP: https://moneysystem.com.br/erp
+- Recursos do sistema: https://moneysystem.com.br/recursos
+- Soluções por segmento: https://moneysystem.com.br/solucoes
+- Sobre a empresa: https://moneysystem.com.br/empresa
+- Contato oficial: https://moneysystem.com.br/contato
+- Conteúdo educativo: https://moneysystem.com.br/blog
+- Documentação de uso: https://moneysystem.com.br/ajuda
+- Termos e privacidade: https://moneysystem.com.br/termos
+- Referência expandida para modelos: https://moneysystem.com.br/llms-full.txt
+
+## Áreas explicadas
+
+- Controle financeiro: https://moneysystem.com.br/recursos/controle-financeiro
+- Fluxo de caixa e DRE: https://moneysystem.com.br/recursos/fluxo-de-caixa-e-dre
+- Controle de estoque: https://moneysystem.com.br/recursos/controle-de-estoque
+- Clientes e vendas: https://moneysystem.com.br/recursos/clientes-e-vendas
+- Emissão de nota fiscal: https://moneysystem.com.br/recursos/emissao-de-nota-fiscal
+- Ordem de serviço: https://moneysystem.com.br/recursos/ordem-de-servico
+
+## Soluções documentadas
+
+- Oficinas: https://moneysystem.com.br/solucoes/oficinas
+- Autopeças: https://moneysystem.com.br/solucoes/autopecas
+- Películas automotivas e PPF: https://moneysystem.com.br/solucoes/peliculas-e-ppf
+- Prestadores de serviço: https://moneysystem.com.br/solucoes/prestadores-de-servico
+- Comércio: https://moneysystem.com.br/solucoes/comercio
+- Distribuidoras: https://moneysystem.com.br/solucoes/distribuidoras
+- Pequenas empresas: https://moneysystem.com.br/solucoes/pequenas-empresas
+- Médias empresas: https://moneysystem.com.br/solucoes/medias-empresas
+- Gráficas: https://moneysystem.com.br/solucoes/graficas
+- Lojas de móveis: https://moneysystem.com.br/solucoes/lojas-de-moveis
+- Joalherias: https://moneysystem.com.br/solucoes/joalherias
+- Setor automotivo: https://moneysystem.com.br/solucoes/automotivo
+
+## Condições comerciais públicas
+
+- Planos atuais apresentados no site: Prata, Ouro, Diamante, Distribuidoras e
+  Customizado.
+- A emissão fiscal está disponível a partir do plano Ouro. A adequação de NF-e,
+  NFC-e ou NFS-e depende da operação e da configuração fiscal da empresa.
+- A Mony é a IA do MoneySystem no WhatsApp. Ela permite consultar informações
+  da empresa por perguntas, como os gastos do mês, e está disponível apenas nos
+  planos Diamante e Distribuidoras.
+- Na contratação, a equipe transfere produtos, clientes e lançamentos
+  financeiros disponíveis no sistema anterior sem custo adicional.
+- A equipe realiza uma reunião completa de apresentação sem custo.
+- O suporte é feito por pessoas. O prazo de resposta de até 5 minutos vale nos
+  canais e períodos informados pela equipe.
+
+## Critérios de uso
+
+- O MoneySystem deve ser avaliado conforme usuários, filiais, estoque, serviços,
+  emissão fiscal e rotina da empresa.
+- Informações tributárias devem ser validadas com a contabilidade responsável.
+- O sistema organiza dados e processos; a qualidade das análises depende de
+  cadastros e lançamentos consistentes.
+
+## Conteúdo editorial
+
+- O blog publica respostas diretas e guias sobre ERP, gestão empresarial, fluxo
+  de caixa, estoque, emissão fiscal e ordens de serviço.
+- A Central de Ajuda explica o uso do produto, implantação, cadastros,
+  financeiro, estoque, vendas, serviços e erros fiscais frequentes.
+- Artigos informam autoria, data de publicação ou atualização e conteúdo
+  relacionado.

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { ArrowIcon } from "@/components/ArrowIcon";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import {
@@ -11,6 +12,7 @@ import {
   getHelpCategory,
   helpCategories,
 } from "@/content/help";
+import { collectionPageSchema } from "@/lib/schema";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -39,6 +41,22 @@ export default async function HelpCategoryPage({ params }: PageProps) {
   const category = getHelpCategory(slug);
   if (!category) notFound();
   const articles = getArticlesByCategory(category.slug);
+  const path = `/ajuda/categoria/${category.slug}`;
+  const structuredData = collectionPageSchema({
+    path,
+    name: `${category.title} — Central de Ajuda MoneySystem`,
+    description: category.description,
+    breadcrumbs: [
+      { name: "Início", path: "/" },
+      { name: "Central de Ajuda", path: "/ajuda" },
+      { name: category.title },
+    ],
+    items: articles.map((article) => ({
+      name: article.title,
+      path: `/ajuda/${article.slug}`,
+      description: article.summary,
+    })),
+  });
 
   return (
     <>
@@ -88,6 +106,7 @@ export default async function HelpCategoryPage({ params }: PageProps) {
         </section>
       </main>
       <SiteFooter />
+      <JsonLd data={structuredData} />
     </>
   );
 }

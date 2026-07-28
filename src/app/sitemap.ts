@@ -6,6 +6,8 @@ import {
   helpCategories,
   helpErrors,
 } from "@/content/help";
+import { resources } from "@/content/resources";
+import { solutions } from "@/content/solutions";
 import { absoluteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -19,11 +21,41 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: absoluteUrl("/erp"),
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: absoluteUrl("/recursos"),
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    ...resources.map((resource) => ({
+      url: absoluteUrl(`/recursos/${resource.slug}`),
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+    {
+      url: absoluteUrl("/solucoes"),
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: absoluteUrl("/solucoes/automotivo"),
       lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.9,
     },
+    ...solutions.map((solution) => ({
+      url: absoluteUrl(`/solucoes/${solution.slug}`),
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
     {
       url: absoluteUrl("/blog"),
       lastModified: currentDate,
@@ -48,12 +80,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
-    ...helpCategories.map((category) => ({
-      url: absoluteUrl(`/ajuda/categoria/${category.slug}`),
-      lastModified: currentDate,
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    })),
+    ...helpCategories
+      .filter((category) =>
+        helpArticles.some((article) => article.category === category.slug),
+      )
+      .map((category) => ({
+        url: absoluteUrl(`/ajuda/categoria/${category.slug}`),
+        lastModified: currentDate,
+        changeFrequency: "monthly" as const,
+        priority: 0.6,
+      })),
     ...helpArticles.map((article) => ({
       url: absoluteUrl(`/ajuda/${article.slug}`),
       lastModified: new Date(`${article.updatedAt}T12:00:00-03:00`),
@@ -66,6 +102,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.6,
     })),
+    {
+      url: absoluteUrl("/empresa"),
+      lastModified: currentDate,
+      changeFrequency: "yearly",
+      priority: 0.5,
+    },
+    {
+      url: absoluteUrl("/contato"),
+      lastModified: currentDate,
+      changeFrequency: "yearly",
+      priority: 0.5,
+    },
+    {
+      url: absoluteUrl("/autores/ney-moraes"),
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
     {
       url: absoluteUrl("/termos"),
       lastModified: currentDate,

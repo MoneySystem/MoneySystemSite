@@ -9,9 +9,9 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { WhatsAppCta } from "@/components/WhatsAppCta";
+import { servicePageSchema } from "@/lib/schema";
 import {
   AUTOMOTIVE_WHATSAPP_MESSAGE,
-  absoluteUrl,
 } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -83,7 +83,7 @@ const automotiveFaq = [
   {
     question: "O atendimento é humano?",
     answer:
-      "Sim. O suporte é feito por pessoas, sempre que precisar, com resposta em até 5 minutos.",
+      "Sim. O suporte é feito por pessoas, com resposta em até 5 minutos nos canais e períodos informados pela equipe.",
   },
 ];
 
@@ -97,7 +97,7 @@ export default function AutomotiveSolutionPage() {
             <Breadcrumbs
               items={[
                 { label: "Início", href: "/" },
-                { label: "Soluções" },
+                { label: "Soluções", href: "/solucoes" },
                 { label: "Automotivo" },
               ]}
             />
@@ -135,6 +135,47 @@ export default function AutomotiveSolutionPage() {
                   Acompanhe a operação também pelo celular.
                 </figcaption>
               </figure>
+            </div>
+          </div>
+        </section>
+
+        <section className="knowledge-related section section--warm">
+          <div className="container">
+            <div className="knowledge-section-heading">
+              <div>
+                <p className="eyebrow">Escolha a operação</p>
+                <h2>Aprofunde o conteúdo do seu segmento automotivo.</h2>
+              </div>
+              <Link className="text-link" href="/solucoes">
+                Ver todas as soluções <ArrowIcon />
+              </Link>
+            </div>
+            <div className="knowledge-related__grid">
+              {[
+                {
+                  href: "/solucoes/oficinas",
+                  title: "Oficinas",
+                  text: "Ordem de serviço, peças, agenda e financeiro.",
+                },
+                {
+                  href: "/solucoes/autopecas",
+                  title: "Autopeças",
+                  text: "Produtos, estoque, vendas, nota e recebimento.",
+                },
+                {
+                  href: "/solucoes/peliculas-e-ppf",
+                  title: "Películas e PPF",
+                  text: "Veículo, aplicação, materiais, garantia e caixa.",
+                },
+              ].map((item) => (
+                <Link href={item.href} key={item.href}>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                  <span>
+                    Abrir solução <ArrowIcon />
+                  </span>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
@@ -279,7 +320,7 @@ export default function AutomotiveSolutionPage() {
               </div>
               <div>
                 <strong>Clientes</strong>
-                <span>Histórico de relacionamento preservado</span>
+                <span>Cadastros preparados pela nossa equipe</span>
               </div>
               <div>
                 <strong>Financeiro</strong>
@@ -365,19 +406,26 @@ export default function AutomotiveSolutionPage() {
       </main>
       <SiteFooter />
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "Service",
+        data={servicePageSchema({
+          path: "/solucoes/automotivo",
           name: "MoneySystem para o setor automotivo",
-          provider: {
-            "@type": "Organization",
-            name: "MoneySystem",
-          },
-          areaServed: "BR",
+          description:
+            "Sistema de gestão para oficinas, autopeças, películas, PPF e serviços ligados a veículos.",
           serviceType:
             "Sistema de gestão para oficinas, autopeças, películas e PPF",
-          url: absoluteUrl("/solucoes/automotivo"),
-        }}
+          audience: [
+            "Oficinas",
+            "Autopeças",
+            "Centros automotivos",
+            "Empresas de películas e PPF",
+          ],
+          breadcrumbs: [
+            { name: "Início", path: "/" },
+            { name: "Soluções", path: "/solucoes" },
+            { name: "Automotivo" },
+          ],
+          faqs: automotiveFaq,
+        })}
       />
     </>
   );

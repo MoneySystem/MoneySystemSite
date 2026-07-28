@@ -3,15 +3,27 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { ArrowIcon } from "@/components/ArrowIcon";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { blogPosts } from "@/content/blog";
+import { collectionPageSchema } from "@/lib/schema";
+
+const blogPath = "/blog";
+const blogTitle = "Blog MoneySystem sobre ERP e gestão empresarial";
+const blogDescription =
+  "Guias claros sobre ERP, organização empresarial, controle financeiro, estoque, emissão de nota fiscal, ordens de serviço e uso de sistemas de gestão.";
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description:
-    "Artigos sobre gestão empresarial, financeiro, mercado automotivo, implantação e histórias de clientes MoneySystem.",
-  alternates: { canonical: "/blog" },
+  title: "Blog sobre ERP e Gestão Empresarial",
+  description: blogDescription,
+  alternates: {
+    canonical: blogPath,
+    types: {
+      "application/rss+xml": `${blogPath}/feed.xml`,
+    },
+  },
 };
 
 function formatDate(date: string) {
@@ -31,15 +43,23 @@ export default function BlogPage() {
       <SiteHeader />
       <main id="conteudo">
         <section className="editorial-hero">
-          <div className="container editorial-hero__grid">
-            <div>
-              <p className="eyebrow eyebrow--bright">Blog MoneySystem</p>
-              <h1>Gestão explicada para quem precisa decidir.</h1>
+          <div className="container">
+            <Breadcrumbs
+              items={[
+                { label: "Início", href: "/" },
+                { label: "Blog" },
+              ]}
+            />
+            <div className="editorial-hero__grid">
+              <div>
+                <p className="eyebrow eyebrow--bright">Blog MoneySystem</p>
+                <h1>Gestão explicada para quem precisa decidir.</h1>
+              </div>
+              <p>
+                Ideias práticas, histórias reais e orientações para colocar
+                números, processos e rotina em ordem.
+              </p>
             </div>
-            <p>
-              Ideias práticas, histórias reais e orientações para colocar
-              números, processos e rotina em ordem.
-            </p>
           </div>
         </section>
 
@@ -71,7 +91,11 @@ export default function BlogPage() {
                 </h2>
                 <p>{featured.excerpt}</p>
                 <div className="post-meta">
-                  <span>{featured.author}</span>
+                  {featured.author === "Ney Moraes" ? (
+                    <Link href="/autores/ney-moraes">{featured.author}</Link>
+                  ) : (
+                    <span>{featured.author}</span>
+                  )}
                   <time dateTime={featured.publishedAt}>
                     {formatDate(featured.publishedAt)}
                   </time>
@@ -100,6 +124,11 @@ export default function BlogPage() {
                   </h2>
                   <p>{post.excerpt}</p>
                   <div className="post-meta">
+                    {post.author === "Ney Moraes" ? (
+                      <Link href="/autores/ney-moraes">{post.author}</Link>
+                    ) : (
+                      <span>{post.author}</span>
+                    )}
                     <time dateTime={post.publishedAt}>
                       {formatDate(post.publishedAt)}
                     </time>
@@ -115,6 +144,22 @@ export default function BlogPage() {
         </section>
       </main>
       <SiteFooter />
+      <JsonLd
+        data={collectionPageSchema({
+          path: blogPath,
+          name: blogTitle,
+          description: blogDescription,
+          items: blogPosts.map((post) => ({
+            name: post.title,
+            path: `/blog/${post.slug}`,
+            description: post.excerpt,
+          })),
+          breadcrumbs: [
+            { name: "Início", path: "/" },
+            { name: "Blog" },
+          ],
+        })}
+      />
     </>
   );
 }

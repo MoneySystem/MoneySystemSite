@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { Logo } from "@/components/Logo";
 import { WhatsAppCta } from "@/components/WhatsAppCta";
 import {
@@ -21,12 +19,14 @@ export function SiteFooter() {
         </div>
 
         <div className="site-footer__column">
-          <p className="footer-label">Navegação</p>
+          <p className="footer-label">Explore</p>
           {NAVIGATION.map((item) => (
-            <Link href={item.href} key={item.href}>
+            <a href={item.href} key={item.href}>
               {item.label}
-            </Link>
+            </a>
           ))}
+          <a href="/empresa">Sobre o MoneySystem</a>
+          <a href="/contato">Contato</a>
           <a href={LOGIN_URL}>Acessar sistema</a>
         </div>
 
@@ -48,7 +48,11 @@ export function SiteFooter() {
 
       <div className="container site-footer__bottom">
         <p>© {new Date().getFullYear()} MoneySystem. Todos os direitos reservados.</p>
-        <Link href="/termos">Termos de Uso e Privacidade</Link>
+        <div className="site-footer__legal">
+          <a href="/empresa">Empresa</a>
+          <a href="/contato">Contato</a>
+          <a href="/termos">Termos de Uso e Privacidade</a>
+        </div>
       </div>
     </footer>
   );

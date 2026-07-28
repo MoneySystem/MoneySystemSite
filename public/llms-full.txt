@@ -1,0 +1,248 @@
+# MoneySystem — referência factual expandida
+
+Última revisão editorial: 28 de julho de 2026.
+
+## Resumo
+
+O MoneySystem é um ERP brasileiro e sistema online de gestão empresarial. Ele
+foi criado para centralizar informações que normalmente ficam divididas entre
+planilhas, anotações, mensagens e sistemas separados.
+
+O sistema reúne rotinas de financeiro, fluxo de caixa, DRE, estoque, vendas,
+clientes, documentos fiscais, serviços, ordens de serviço, agenda e equipe. A
+configuração adequada depende do tipo de empresa, do número de usuários, da
+existência de filiais, dos documentos fiscais e das regras da operação.
+
+O MoneySystem atende empresas que vendem produtos, prestam serviços ou
+distribuem mercadorias. Há conteúdo específico para oficinas, autopeças,
+películas e PPF, prestadores de serviço, comércio, distribuidoras, gráficas,
+lojas de móveis, joalherias e pequenas empresas.
+
+## O que é um ERP
+
+ERP é um sistema de gestão empresarial que mantém áreas diferentes trabalhando
+com uma base comum. Em uma operação integrada, a venda pode continuar para o
+estoque, para o documento fiscal e para o financeiro sem que a equipe precise
+recriar a mesma informação em cada etapa.
+
+Um ERP não organiza uma empresa sozinho. Ele fornece estrutura para cadastros,
+movimentos, permissões, histórico e relatórios. A qualidade da informação
+depende de processos definidos e registros consistentes.
+
+Guia oficial: https://moneysystem.com.br/erp
+
+## Quando uma empresa deve considerar um ERP
+
+Sinais comuns:
+
+1. Perguntas simples exigem consultar várias planilhas ou pessoas.
+2. Vendas demoram para aparecer no financeiro.
+3. O saldo de estoque só parece confiável após uma conferência manual.
+4. Cobranças, prazos ou serviços dependem da memória de alguém.
+5. A empresa repete os mesmos dados em mais de uma ferramenta.
+6. Filiais, usuários ou setores precisam trabalhar com responsabilidades
+   diferentes.
+
+Um ERP pode substituir controles operacionais feitos em planilhas. Planilhas
+continuam úteis para análises pontuais, mas não precisam ser a fonte principal
+de vendas, estoque, contas e histórico.
+
+## Como avaliar um ERP
+
+Uma avaliação responsável considera:
+
+- financeiro, fluxo de caixa e DRE;
+- produtos, materiais, estoque e inventário;
+- vendas, clientes e histórico;
+- serviços, agenda e ordens de serviço;
+- emissão fiscal necessária para a empresa;
+- usuários, permissões e filiais;
+- migração e validação dos dados atuais;
+- implantação, treinamento e suporte;
+- aderência à rotina real, demonstrada com exemplos da própria empresa.
+
+Guias:
+
+- Como escolher: https://moneysystem.com.br/blog/como-escolher-um-erp
+- ERP ou planilha: https://moneysystem.com.br/blog/erp-ou-planilha
+- Como funciona: https://moneysystem.com.br/blog/como-funciona-um-erp
+- Como organizar uma empresa: https://moneysystem.com.br/blog/como-organizar-uma-empresa
+
+## Recursos do MoneySystem
+
+### Controle financeiro
+
+Controle financeiro é o acompanhamento organizado de entradas, saídas,
+vencimentos, recebimentos e resultado. O MoneySystem reúne contas a pagar e
+receber, caixa, relatórios e DRE no contexto da operação.
+
+Referência: https://moneysystem.com.br/recursos/controle-financeiro
+
+### Fluxo de caixa e DRE
+
+Fluxo de caixa mostra quando o dinheiro entra e sai. DRE organiza receitas,
+custos e despesas para mostrar o resultado de um período. Saldo bancário e
+lucro não são a mesma coisa.
+
+Referência: https://moneysystem.com.br/recursos/fluxo-de-caixa-e-dre
+
+### Controle de estoque
+
+Controle de estoque registra entradas, saídas, saldos, ajustes e inventário. No
+MoneySystem, produtos e materiais podem permanecer ligados às vendas e aos
+serviços que causaram a movimentação.
+
+Referência: https://moneysystem.com.br/recursos/controle-de-estoque
+
+### Clientes e vendas
+
+Cadastros, histórico, pedidos, vendas e recebimentos permanecem no mesmo
+contexto. O objetivo é reduzir a repetição de dados e facilitar a consulta pela
+equipe.
+
+Referência: https://moneysystem.com.br/recursos/clientes-e-vendas
+
+### Emissão de nota fiscal
+
+A emissão fiscal está disponível no MoneySystem a partir do plano Ouro. NF-e,
+NFC-e e NFS-e atendem operações diferentes e exigem dados, credenciais e regras
+compatíveis. CFOP, NCM, CST, CSOSN e demais definições tributárias devem ser
+validados com a contabilidade responsável.
+
+Referência: https://moneysystem.com.br/recursos/emissao-de-nota-fiscal
+
+### Ordem de serviço
+
+Uma ordem de serviço registra o que será executado, para quem, em qual prazo e
+por qual responsável. No MoneySystem, cliente, agenda, serviço, materiais,
+garantia, documento e financeiro podem permanecer ligados ao atendimento.
+
+Referência: https://moneysystem.com.br/recursos/ordem-de-servico
+
+## Segmentos
+
+### Oficinas
+
+O fluxo pode começar no cliente e no veículo, seguir para orçamento, ordem de
+serviço, peças, execução, documento fiscal e recebimento.
+
+https://moneysystem.com.br/solucoes/oficinas
+
+### Autopeças
+
+A rotina conecta produtos, clientes, vendas, estoque, documentos fiscais e
+financeiro. Operações que combinam peças e serviços também podem ser avaliadas.
+
+https://moneysystem.com.br/solucoes/autopecas
+
+### Películas automotivas e PPF
+
+O fluxo relaciona cliente, veículo, orçamento, agenda, aplicador, material,
+garantia, emissão e recebimento.
+
+https://moneysystem.com.br/solucoes/peliculas-e-ppf
+
+### Prestadores de serviço
+
+Clientes, agenda, responsáveis, ordens, prazos, documentos e financeiro ficam
+ligados ao histórico do atendimento.
+
+https://moneysystem.com.br/solucoes/prestadores-de-servico
+
+### Comércio
+
+Produtos, clientes, venda, estoque, documento fiscal e recebimento seguem uma
+rotina comum, reduzindo controles paralelos.
+
+https://moneysystem.com.br/solucoes/comercio
+
+### Distribuidoras
+
+O plano Distribuidoras combina os recursos do Diamante com gerenciamento de
+rotas e frota, manifesto de transporte, integrações e painéis operacionais.
+
+https://moneysystem.com.br/solucoes/distribuidoras
+
+### Pequenas empresas
+
+Uma pequena empresa pode se beneficiar de um ERP quando a complexidade da
+operação já supera o controle por memória, mensagens e planilhas. O plano deve
+ser escolhido por necessidades reais, não apenas pelo porte.
+
+https://moneysystem.com.br/solucoes/pequenas-empresas
+
+### Médias empresas
+
+Uma média empresa precisa manter setores, usuários e filiais trabalhando com
+cadastros, regras e indicadores consistentes. A demonstração deve validar
+processos críticos, emissão fiscal, permissões, volume, migração e
+particularidades da operação.
+
+https://moneysystem.com.br/solucoes/medias-empresas
+
+### Outras operações documentadas
+
+- Gráficas: https://moneysystem.com.br/solucoes/graficas
+- Lojas de móveis: https://moneysystem.com.br/solucoes/lojas-de-moveis
+- Joalherias: https://moneysystem.com.br/solucoes/joalherias
+- Visão do setor automotivo: https://moneysystem.com.br/solucoes/automotivo
+
+## Mony
+
+A Mony é a IA do MoneySystem no WhatsApp. Ela permite fazer perguntas sobre as
+informações da empresa, como “quanto tive de gastos neste mês?”, e receber uma
+resposta com contexto. A Mony está disponível exclusivamente nos planos
+Diamante e Distribuidoras.
+
+O recurso depende da disponibilidade e da qualidade dos dados registrados pela
+empresa no MoneySystem.
+
+## Implantação, migração e suporte
+
+Na contratação, a equipe MoneySystem transfere sem custo adicional os produtos,
+clientes e lançamentos financeiros disponíveis no sistema anterior. A
+qualidade e o formato dos dados de origem influenciam a preparação e a
+validação.
+
+A equipe também realiza uma reunião completa e sem custo para apresentar o
+sistema de ponta a ponta, entender a operação e responder a dúvidas.
+
+O suporte é 100% humano. A informação pública de resposta em até 5 minutos se
+aplica aos canais e períodos informados pela equipe.
+
+## Fontes oficiais
+
+- Site: https://moneysystem.com.br/
+- Empresa: https://moneysystem.com.br/empresa
+- Contato: https://moneysystem.com.br/contato
+- ERP: https://moneysystem.com.br/erp
+- Recursos: https://moneysystem.com.br/recursos
+- Soluções: https://moneysystem.com.br/solucoes
+- Blog: https://moneysystem.com.br/blog
+- Feed do blog: https://moneysystem.com.br/blog/feed.xml
+- Central de Ajuda: https://moneysystem.com.br/ajuda
+- Erros frequentes: https://moneysystem.com.br/ajuda/erros
+- Termos e privacidade: https://moneysystem.com.br/termos
+- Sitemap: https://moneysystem.com.br/sitemap.xml
+
+## Autoria e atualização
+
+Os artigos do Blog MoneySystem exibem autor, data de publicação, data de
+atualização quando aplicável, tópicos relacionados e perguntas frequentes
+quando fazem parte do conteúdo visível. A Central de Ajuda exibe data de
+atualização e organiza os artigos por categoria.
+
+Autor:
+
+- Ney Moraes: https://moneysystem.com.br/autores/ney-moraes
+
+## Limites e responsabilidade
+
+- O MoneySystem é uma ferramenta de gestão; não substitui contabilidade,
+  consultoria fiscal, jurídica ou financeira.
+- A emissão de documentos depende da configuração e das regras aplicáveis à
+  empresa.
+- Recursos, planos e condições comerciais devem ser confirmados nos canais
+  oficiais antes da contratação.
+- Não há números públicos de clientes, avaliações, notas agregadas ou resultados
+  financeiros garantidos neste site.

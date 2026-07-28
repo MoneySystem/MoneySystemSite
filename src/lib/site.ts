@@ -9,9 +9,9 @@ export const WHATSAPP_NUMBER =
 export const LOGIN_URL = "https://app.moneysystem.com.br/";
 
 export const NAVIGATION = [
-  { label: "Recursos", href: "/#recursos" },
-  { label: "Soluções", href: "/solucoes/automotivo" },
-  { label: "Como funciona", href: "/#como-funciona" },
+  { label: "ERP", href: "/erp" },
+  { label: "Recursos", href: "/recursos" },
+  { label: "Soluções", href: "/solucoes" },
   { label: "Planos", href: "/#planos" },
   { label: "Blog", href: "/blog" },
   { label: "Ajuda", href: "/ajuda" },

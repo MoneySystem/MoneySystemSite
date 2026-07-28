@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-html-link-for-pages -- Native links keep the static marketing page free of client-side navigation work. */
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 
 import { ArrowIcon } from "@/components/ArrowIcon";
 import { JsonLd } from "@/components/JsonLd";
@@ -9,10 +9,16 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { WhatsAppCta } from "@/components/WhatsAppCta";
 import {
-  HOME_WHATSAPP_MESSAGE,
   absoluteUrl,
-  createWhatsAppUrl,
+  HOME_WHATSAPP_MESSAGE,
 } from "@/lib/site";
+import {
+  combineSchemaGraphs,
+  faqSchema,
+  ORGANIZATION_ID,
+  SOFTWARE_ID,
+  webPageSchema,
+} from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "O sistema que coloca sua empresa em ordem",
@@ -51,26 +57,31 @@ const connectedFlow = [
 const benefits = [
   {
     number: "01",
+    href: "/recursos/fluxo-de-caixa-e-dre",
     title: "Saiba exatamente quanto sobra no fim do mês.",
     text: "Entradas, saídas, contas e DRE ficam claras sem você remontar a empresa em uma planilha.",
   },
   {
     number: "02",
+    href: "/recursos/controle-financeiro",
     title: "Pare de descobrir cobranças quando já estão atrasadas.",
     text: "Você enxerga o que vence, o que entrou e o que ainda precisa da sua atenção.",
   },
   {
     number: "03",
+    href: "/recursos/controle-de-estoque",
     title: "Descubra antes quando o estoque está acabando.",
     text: "Acompanhe movimentações e disponibilidade antes que a falta interrompa uma venda ou serviço.",
   },
   {
     number: "04",
+    href: "/recursos/emissao-de-nota-fiscal",
     title: "Emita a nota sem refazer o trabalho da venda.",
     text: "Pedido, faturamento e emissão fiscal continuam no mesmo caminho, com menos conferência manual.",
   },
   {
     number: "05",
+    href: "/recursos/clientes-e-vendas",
     title: "Tenha a empresa inteira no mesmo contexto.",
     text: "Clientes, serviços, equipe, metas, comissões e histórico deixam de viver em ferramentas separadas.",
   },
@@ -190,9 +201,12 @@ export default function HomePage() {
                 >
                   Quero minha empresa em ordem
                 </WhatsAppCta>
-                <Link className="button button--soft" href="#como-funciona">
+                <a
+                  className="button button--soft"
+                  href="#como-funciona"
+                >
                   Entender como funciona <ArrowIcon direction="down" />
-                </Link>
+                </a>
               </div>
               <ul className="home-trust-row" aria-label="Diferenciais de atendimento">
                 <li>Reunião completa, sem custo</li>
@@ -220,7 +234,6 @@ export default function HomePage() {
                   alt="MoneySystem aberto em um notebook e em um celular, mostrando a visão geral de clientes, produtos, serviços, vendas e financeiro"
                   width={962}
                   height={698}
-                  preload
                   sizes="(max-width: 900px) 94vw, 56vw"
                 />
                 <figcaption>
@@ -368,13 +381,20 @@ export default function HomePage() {
             />
             <div className="home-benefits__grid">
               {benefits.map((benefit) => (
-                <article className="home-benefit home-reveal" key={benefit.title}>
+                <a
+                  className="home-benefit home-reveal"
+                  href={benefit.href}
+                  key={benefit.title}
+                >
                   <span>{benefit.number}</span>
                   <h3>{benefit.title}</h3>
                   <p>{benefit.text}</p>
-                </article>
+                </a>
               ))}
             </div>
+            <a className="text-link home-benefits__more" href="/recursos">
+              Ver todos os recursos explicados <ArrowIcon />
+            </a>
           </div>
         </section>
 
@@ -438,45 +458,56 @@ export default function HomePage() {
             />
             <div className="home-segments__list">
               {[
-                "Automotivo",
-                "Gráficas",
-                "Lojas de móveis",
-                "Joalherias",
-                "Distribuidoras",
-                "Outros segmentos",
-              ].map((segment, index) =>
-                segment === "Automotivo" ? (
-                  <Link
-                    className="home-segment home-segment--featured"
-                    href="/solucoes/automotivo"
-                    key={segment}
-                  >
-                    <span>
-                      <strong>{segment}</strong>
-                      <small>Página dedicada para o setor</small>
-                    </span>
+                {
+                  label: "Automotivo",
+                  href: "/solucoes/automotivo",
+                  description: "Oficinas, autopeças, películas e PPF",
+                  featured: true,
+                },
+                {
+                  label: "Gráficas",
+                  href: "/solucoes/graficas",
+                  description: "Orçamentos, serviços e materiais",
+                },
+                {
+                  label: "Lojas de móveis",
+                  href: "/solucoes/lojas-de-moveis",
+                  description: "Pedidos, estoque e recebimentos",
+                },
+                {
+                  label: "Joalherias",
+                  href: "/solucoes/joalherias",
+                  description: "Produtos, clientes e vendas",
+                },
+                {
+                  label: "Distribuidoras",
+                  href: "/solucoes/distribuidoras",
+                  description: "Pedidos, estoque, rotas e frota",
+                },
+                {
+                  label: "Outros segmentos",
+                  href: "/solucoes",
+                  description: "Veja todas as soluções",
+                },
+              ].map((segment, index) => (
+                <a
+                  className={`home-segment${segment.featured ? " home-segment--featured" : ""}`}
+                  href={segment.href}
+                  key={segment.label}
+                >
+                  <span>
+                    <strong>{segment.label}</strong>
+                    <small>{segment.description}</small>
+                  </span>
+                  {segment.featured ? (
                     <ArrowIcon />
-                  </Link>
-                ) : (
-                  <a
-                    className="home-segment"
-                    href={createWhatsAppUrl(
-                      `Olá! Quero saber como o MoneySystem atende ${segment.toLowerCase()}.`,
-                    )}
-                    target="_blank"
-                    rel="noreferrer"
-                    key={segment}
-                  >
-                    <span>
-                      <strong>{segment}</strong>
-                      <small>Conversar sobre minha operação</small>
-                    </span>
+                  ) : (
                     <span className="home-segment__number">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                  </a>
-                ),
-              )}
+                  )}
+                </a>
+              ))}
             </div>
           </div>
 
@@ -495,12 +526,50 @@ export default function HomePage() {
                 Conheça a história de uma empresa consolidada que decidiu
                 organizar a rotina com o MoneySystem.
               </p>
-              <Link
+              <a
                 className="text-link"
                 href="/blog/2025-08-22-lunarfilm-35-anos-transformacao-gestao-moneysystem"
               >
                 Ler a história da LunarFilm <ArrowIcon />
-              </Link>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section className="knowledge-links section section--warm">
+          <div className="container">
+            <div className="knowledge-section-heading">
+              <div>
+                <p className="eyebrow">Entenda antes de decidir</p>
+                <h2>Conhecimento para escolher um sistema com clareza.</h2>
+              </div>
+              <p>
+                Guias diretos sobre ERP, gestão empresarial e os processos que
+                precisam continuar conectados.
+              </p>
+            </div>
+            <div className="knowledge-links__grid">
+              <a href="/erp">
+                <p className="eyebrow">Guia principal</p>
+                <h2>O que é um ERP e como funciona?</h2>
+                <span>
+                  Ler a explicação <ArrowIcon />
+                </span>
+              </a>
+              <a href="/blog/como-organizar-uma-empresa">
+                <p className="eyebrow">Gestão na prática</p>
+                <h2>Como organizar uma empresa?</h2>
+                <span>
+                  Ver o passo a passo <ArrowIcon />
+                </span>
+              </a>
+              <a href="/blog/como-escolher-um-erp">
+                <p className="eyebrow">Critérios de escolha</p>
+                <h2>Como escolher um ERP?</h2>
+                <span>
+                  Comparar com segurança <ArrowIcon />
+                </span>
+              </a>
             </div>
           </div>
         </section>
@@ -629,37 +698,51 @@ export default function HomePage() {
       <SiteFooter />
 
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "SoftwareApplication",
-          name: "MoneySystem",
-          url: absoluteUrl("/"),
-          applicationCategory: "BusinessApplication",
-          operatingSystem: "Web",
-          description:
-            "Sistema de gestão empresarial para organizar financeiro, estoque, vendas, notas fiscais, serviços e equipe.",
-          image: absoluteUrl("/images/dashboard-devices.png"),
-          offers: plans.map((plan) => ({
-            "@type": "Offer",
-            name: `Plano ${plan.name}`,
-            priceCurrency: "BRL",
-            price: plan.price.replace(/\D/g, ""),
-          })),
-        }}
-      />
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: faqs.map((faq) => ({
-            "@type": "Question",
-            name: faq.question,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: faq.answer,
+        data={combineSchemaGraphs(
+          webPageSchema({
+            path: "/",
+            name: "MoneySystem — O sistema que coloca sua empresa em ordem",
+            description:
+              "ERP brasileiro para organizar financeiro, estoque, vendas, notas fiscais, serviços, clientes e equipe.",
+          }),
+          {
+            "@context": "https://schema.org",
+            "@type": ["SoftwareApplication", "WebApplication"],
+            "@id": SOFTWARE_ID,
+            name: "MoneySystem",
+            url: absoluteUrl("/"),
+            applicationCategory: "BusinessApplication",
+            applicationSubCategory: "ERP e sistema de gestão empresarial",
+            operatingSystem: "Web",
+            inLanguage: "pt-BR",
+            description:
+              "ERP brasileiro e sistema online de gestão empresarial para organizar financeiro, estoque, vendas, notas fiscais, serviços, clientes e equipe.",
+            provider: { "@id": ORGANIZATION_ID },
+            screenshot: {
+              "@type": "ImageObject",
+              url: absoluteUrl("/images/dashboard-devices.png"),
+              contentUrl: absoluteUrl("/images/dashboard-devices.png"),
+              caption:
+                "Dashboard do MoneySystem em um notebook e em um celular.",
             },
-          })),
-        }}
+            featureList: [
+              "Controle financeiro e DRE",
+              "Controle de estoque",
+              "Vendas e clientes",
+              "Emissão de notas fiscais",
+              "Ordens de serviço e agenda",
+              "Gestão de equipe",
+            ],
+            offers: plans.map((plan) => ({
+              "@type": "Offer",
+              name: `Plano ${plan.name}`,
+              priceCurrency: "BRL",
+              price: plan.price.replace(/\D/g, ""),
+              url: absoluteUrl("/#planos"),
+            })),
+          },
+          faqSchema("/", faqs),
+        )}
       />
     </>
   );

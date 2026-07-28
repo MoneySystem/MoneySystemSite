@@ -6,15 +6,24 @@ export type ContentSection = {
   note?: string;
 };
 
+export type BlogFaq = {
+  question: string;
+  answer: string;
+};
+
 export type BlogPost = {
   slug: string;
   title: string;
   excerpt: string;
+  shortAnswer?: string;
   publishedAt: string;
   updatedAt?: string;
   author: string;
   categories: string[];
   readingTime: string;
+  entities?: string[];
+  relatedSlugs?: string[];
+  faqs?: BlogFaq[];
   sections: ContentSection[];
 };
 
