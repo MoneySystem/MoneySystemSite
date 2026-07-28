@@ -15,37 +15,64 @@ import {
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Sua empresa em ordem. Sua cabeça tranquila.",
+  title: "O sistema que coloca sua empresa em ordem",
   description:
-    "Centralize vendas, financeiro, estoque, notas fiscais, serviços e equipe. Migração gratuita, reunião completa sem custo e suporte 100% humano.",
+    "Organize financeiro, estoque, vendas, notas fiscais, serviços e equipe. Migração gratuita, reunião sem custo e suporte 100% humano.",
   alternates: { canonical: "/" },
 };
 
-const outcomes = [
+const painPoints = [
+  {
+    label: "No fim do mês",
+    title: "O movimento foi grande. Mas quanto realmente sobrou?",
+  },
+  {
+    label: "Durante o dia",
+    title: "Cobranças, pedidos e serviços dependem da sua memória.",
+  },
+  {
+    label: "Na operação",
+    title: "O estoque acaba antes que alguém perceba.",
+  },
+  {
+    label: "Na decisão",
+    title: "A resposta existe — só está espalhada em lugares diferentes.",
+  },
+];
+
+const connectedFlow = [
+  ["01", "A venda acontece"],
+  ["02", "O estoque acompanha"],
+  ["03", "A nota fica no fluxo"],
+  ["04", "O recebimento não some"],
+  ["05", "O resultado aparece"],
+];
+
+const benefits = [
   {
     number: "01",
-    title: "Financeiro sob controle",
-    text: "Acompanhe contas, receitas, despesas, fluxo de caixa e DRE sem remontar o mês em planilhas.",
+    title: "Saiba exatamente quanto sobra no fim do mês.",
+    text: "Entradas, saídas, contas e DRE ficam claras sem você remontar a empresa em uma planilha.",
   },
   {
     number: "02",
-    title: "Estoque organizado",
-    text: "Veja entradas, saídas e produtos disponíveis antes que a falta vire um problema.",
+    title: "Pare de descobrir cobranças quando já estão atrasadas.",
+    text: "Você enxerga o que vence, o que entrou e o que ainda precisa da sua atenção.",
   },
   {
     number: "03",
-    title: "Vendas e notas no mesmo fluxo",
-    text: "Do pedido à emissão fiscal e ao recebimento, sem repetir informações em ferramentas diferentes.",
+    title: "Descubra antes quando o estoque está acabando.",
+    text: "Acompanhe movimentações e disponibilidade antes que a falta interrompa uma venda ou serviço.",
   },
   {
     number: "04",
-    title: "Serviços acompanhados",
-    text: "Organize agenda, ordens, responsáveis, garantias e histórico do cliente.",
+    title: "Emita a nota sem refazer o trabalho da venda.",
+    text: "Pedido, faturamento e emissão fiscal continuam no mesmo caminho, com menos conferência manual.",
   },
   {
     number: "05",
-    title: "Equipe com regras claras",
-    text: "Cadastre funcionários, metas, comissões e permissões no mesmo ambiente.",
+    title: "Tenha a empresa inteira no mesmo contexto.",
+    text: "Clientes, serviços, equipe, metas, comissões e histórico deixam de viver em ferramentas separadas.",
   },
 ];
 
@@ -54,7 +81,7 @@ const plans = [
     name: "Prata",
     price: "R$ 240",
     suffix: "/mês",
-    description: "Para organizar os números e as rotinas essenciais.",
+    description: "Para colocar os números e a rotina essencial em ordem.",
     features: [
       "DRE",
       "Relatórios completos",
@@ -67,7 +94,7 @@ const plans = [
     name: "Ouro",
     price: "R$ 360",
     suffix: "/mês",
-    description: "Para operar, acompanhar e emitir notas fiscais.",
+    description: "Para acompanhar a operação e emitir notas fiscais.",
     features: [
       "Tudo do plano Prata",
       "Emissão de notas fiscais",
@@ -76,6 +103,7 @@ const plans = [
       "Até 5 usuários",
     ],
     featured: true,
+    badge: "Inclui emissão fiscal",
   },
   {
     name: "Diamante",
@@ -84,7 +112,7 @@ const plans = [
     description: "Para uma operação completa e uma equipe maior.",
     features: [
       "Tudo do plano Ouro",
-      "Mony no WhatsApp",
+      "Mony, a IA no WhatsApp",
       "Controle de ponto",
       "Treinamento especializado",
       "Usuários ilimitados",
@@ -95,10 +123,10 @@ const plans = [
     name: "Distribuidoras",
     price: "R$ 1.580",
     suffix: "/mês",
-    description: "Para rotas, frota e operação de distribuição.",
+    description: "Para rotas, frota e uma distribuição organizada.",
     features: [
       "Recursos do Diamante",
-      "Mony no WhatsApp",
+      "Mony, a IA no WhatsApp",
       "Gerenciamento de rotas e frota",
       "Manifesto de transporte",
       "Integrações e painéis operacionais",
@@ -116,27 +144,27 @@ const faqs = [
   {
     question: "Vou precisar cadastrar tudo novamente?",
     answer:
-      "Não. Na contratação, nossa equipe transfere sem custo adicional os produtos, clientes e lançamentos financeiros disponíveis no seu sistema antigo.",
+      "Não. Na contratação, nossa equipe transfere sem custo adicional os produtos, clientes e lançamentos financeiros disponíveis no seu sistema atual.",
   },
   {
     question: "O MoneySystem emite notas fiscais?",
     answer:
-      "Sim. A emissão fiscal está disponível a partir do plano Ouro. Na reunião, confirmamos os documentos e regras necessários para o cenário da sua empresa.",
+      "Sim. A emissão fiscal está disponível a partir do plano Ouro. Na reunião, confirmamos os documentos e as regras necessários para sua empresa.",
   },
   {
     question: "O sistema atende o meu segmento?",
     answer:
-      "O MoneySystem atende empresas de produtos, serviços e distribuição. Um especialista avalia sua rotina e indica a configuração adequada.",
+      "O MoneySystem atende empresas de produtos, serviços e distribuição. Uma pessoa da nossa equipe avalia sua rotina e indica a configuração adequada.",
   },
   {
     question: "Como funciona o suporte?",
     answer:
-      "O atendimento é feito por pessoas, sempre que você precisar, com resposta em até 5 minutos.",
+      "O atendimento é feito por pessoas, com resposta em até 5 minutos nos canais e períodos informados pela equipe.",
   },
   {
     question: "Em quais planos a Mony está disponível?",
     answer:
-      "A Mony, IA do MoneySystem pelo WhatsApp, está incluída nos planos Diamante e Distribuidoras.",
+      "A Mony, IA do MoneySystem pelo WhatsApp, está incluída exclusivamente nos planos Diamante e Distribuidoras.",
   },
 ];
 
@@ -145,256 +173,270 @@ export default function HomePage() {
     <>
       <SiteHeader />
       <main id="conteudo">
-        <section className="hero">
-          <div className="container hero__grid">
-            <div className="hero__content">
-              <p className="eyebrow eyebrow--bright">
-                Gestão empresarial, sem complicação
-              </p>
-              <h1>Sua empresa em ordem. Sua cabeça tranquila.</h1>
-              <p className="hero__lead">
-                Vendas, financeiro, estoque, notas fiscais, serviços e equipe
-                em um só lugar — para você enxergar o negócio e decidir com
-                segurança.
+        <section className="home-hero">
+          <div className="container home-hero__grid">
+            <div className="home-hero__content">
+              <p className="eyebrow">O sistema que coloca sua empresa em ordem</p>
+              <h1>Sua empresa não precisa morar na sua cabeça.</h1>
+              <p className="home-hero__lead">
+                O MoneySystem organiza a operação e mostra o que precisa da sua
+                atenção. Você decide com clareza, sem passar o dia apagando
+                incêndios.
               </p>
               <div className="button-row">
-                <WhatsAppCta message={HOME_WHATSAPP_MESSAGE}>
-                  Falar com um especialista
+                <WhatsAppCta
+                  message={HOME_WHATSAPP_MESSAGE}
+                  className="button button--primary button--hero"
+                >
+                  Quero minha empresa em ordem
                 </WhatsAppCta>
-                <Link className="button button--ghost-light" href="#recursos">
-                  Conhecer o sistema <ArrowIcon direction="down" />
+                <Link className="button button--soft" href="#como-funciona">
+                  Entender como funciona <ArrowIcon direction="down" />
                 </Link>
               </div>
-              <ul className="hero__trust" aria-label="Diferenciais de atendimento">
+              <ul className="home-trust-row" aria-label="Diferenciais de atendimento">
                 <li>Reunião completa, sem custo</li>
                 <li>Migração gratuita</li>
-                <li>Suporte humano em até 5 min</li>
+                <li>Resposta humana em até 5 min</li>
               </ul>
             </div>
 
-            <figure className="hero__product open-frame">
-              <div className="hero__product-label">
-                <span>Tela real do produto</span>
-                <span>Web + celular</span>
-              </div>
-              <Image
-                src="/images/dashboard-devices.png"
-                alt="MoneySystem aberto em um notebook e em um celular, mostrando o dashboard com clientes, produtos, serviços, vendas e financeiro"
-                width={962}
-                height={698}
-                preload
-                sizes="(max-width: 900px) 94vw, 56vw"
+            <div className="home-hero__visual" aria-label="MoneySystem em uso">
+              <div className="home-stage-glow home-stage-glow--blue" aria-hidden="true" />
+              <div
+                className="home-stage-glow home-stage-glow--purple"
+                aria-hidden="true"
               />
-              <figcaption>
-                A mesma operação, acessível onde o trabalho acontece.
-              </figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <section className="pain-section section">
-          <div className="container pain-section__grid">
-            <SectionHeading
-              eyebrow="A rotina real da empresa"
-              title="Sua gestão não deveria depender de memória, planilhas e conferência manual."
-              description={
-                <p>
-                  Quando cada informação fica em um lugar, você perde tempo
-                  procurando respostas que deveria ter na hora.
-                </p>
-              }
-            />
-            <div className="pain-list">
-              {[
-                "Quanto entrou, quanto saiu e quanto realmente sobrou.",
-                "O que há no estoque e o que precisa ser comprado.",
-                "O que foi vendido, entregue, faturado ou ficou pendente.",
-                "Como estão os serviços, a equipe e os compromissos do dia.",
-              ].map((item, index) => (
-                <div className="pain-list__item" key={item}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <p>{item}</p>
+              <figure className="home-product-stage">
+                <div className="home-product-stage__top">
+                  <span>
+                    <i aria-hidden="true" />
+                    Tela real do MoneySystem
+                  </span>
+                  <span>Computador + celular</span>
                 </div>
-              ))}
-              <p className="pain-list__closing">
-                O MoneySystem reúne essa rotina em uma visão clara e atualizada.
-              </p>
+                <Image
+                  src="/images/dashboard-devices.png"
+                  alt="MoneySystem aberto em um notebook e em um celular, mostrando a visão geral de clientes, produtos, serviços, vendas e financeiro"
+                  width={962}
+                  height={698}
+                  preload
+                  sizes="(max-width: 900px) 94vw, 56vw"
+                />
+                <figcaption>
+                  A informação acompanha você onde o trabalho acontece.
+                </figcaption>
+              </figure>
+              <div className="home-stage-note home-stage-note--top">
+                <span aria-hidden="true" />
+                <div>
+                  <small>Em poucos segundos</small>
+                  <strong>Veja o que pede atenção hoje</strong>
+                </div>
+              </div>
+              <div className="home-stage-note home-stage-note--bottom">
+                <span aria-hidden="true" />
+                <div>
+                  <small>Uma única operação</small>
+                  <strong>Tudo conversa no mesmo lugar</strong>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="outcomes section" id="recursos">
-          <div className="container">
+        <section className="home-problem section">
+          <div className="container home-problem__grid">
             <SectionHeading
-              eyebrow="Clareza para trabalhar"
-              title="Abra o sistema e saiba onde sua empresa está."
+              eyebrow="A rotina real de quem empreende"
+              title="O problema não é falta de esforço. É informação espalhada."
               description={
                 <p>
-                  Cada área alimenta a próxima. Você acompanha o trabalho sem
-                  reconstruir a história em ferramentas separadas.
+                  Você vende, atende, compra, cobra e resolve. Mesmo assim, o
+                  dia termina com perguntas que a empresa já deveria responder.
                 </p>
               }
             />
-            <div className="outcome-list">
-              {outcomes.map((outcome) => (
-                <article className="outcome-item" key={outcome.title}>
-                  <span>{outcome.number}</span>
-                  <h3>{outcome.title}</h3>
-                  <p>{outcome.text}</p>
+            <div className="home-chaos-list">
+              {painPoints.map((item, index) => (
+                <article className="home-chaos-item home-reveal" key={item.title}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <small>{item.label}</small>
+                    <h3>{item.title}</h3>
+                  </div>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="product-section section section--warm">
-          <div className="container product-section__grid">
-            <div className="product-section__visual open-frame open-frame--light">
-              <Image
-                src="/images/dashboard-devices.png"
-                alt="Dashboard real do MoneySystem com módulos de clientes, produtos, serviços, ordens, vendas e financeiro"
-                width={962}
-                height={698}
-                sizes="(max-width: 900px) 92vw, 54vw"
-              />
-            </div>
-            <div className="product-section__content">
-              <p className="eyebrow">O MoneySystem por dentro</p>
-              <h2>O que importa, no mesmo sistema.</h2>
-              <div className="product-points">
-                {[
-                  ["Visão geral", "Comece o dia sabendo o que exige sua atenção."],
-                  [
-                    "Financeiro e DRE",
-                    "Entenda receitas, despesas, contas e resultado.",
-                  ],
-                  [
-                    "Vendas e notas",
-                    "Registre a venda e siga até o faturamento.",
-                  ],
-                  [
-                    "Produtos e estoque",
-                    "Acompanhe movimentações e disponibilidade.",
-                  ],
-                  [
-                    "Serviços e ordens",
-                    "Organize cada atendimento do início à entrega.",
-                  ],
-                ].map(([title, text]) => (
-                  <div key={title}>
-                    <h3>{title}</h3>
-                    <p>{text}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="mony-section section">
-          <div className="container mony-section__grid">
-            <div className="mony-section__content">
-              <p className="eyebrow eyebrow--purple">
-                Mony, a IA do MoneySystem
-              </p>
-              <h2>Os números da sua empresa, respondidos no WhatsApp.</h2>
-              <p>
-                Faça perguntas sobre a operação e receba uma resposta
-                contextual sem precisar abrir relatórios ou juntar planilhas.
-              </p>
-              <div className="mony-badge">
-                Disponível nos planos Diamante e Distribuidoras
-              </div>
-            </div>
-            <div
-              className="mony-chat"
-              role="img"
-              aria-label="Exemplo ilustrativo de uma conversa com a Mony"
-            >
-              <div className="mony-chat__top">
-                <span className="mony-avatar">M</span>
-                <div>
-                  <strong>Mony</strong>
-                  <small>IA do MoneySystem</small>
-                </div>
-                <span className="mony-online">online</span>
-              </div>
-              <div className="mony-chat__body">
-                <p className="chat-bubble chat-bubble--question">
-                  Quanto tive de gastos neste mês?
-                </p>
-                <div className="chat-bubble chat-bubble--answer">
-                  <small>Exemplo ilustrativo</small>
-                  <p>
-                    Seus gastos registrados neste mês somam{" "}
-                    <strong>R$ 18.420,00</strong>.
-                  </p>
-                  <span>
-                    Posso separar por categoria ou comparar com o mês passado.
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="migration-section section" id="como-funciona">
+        <section className="home-flow section" id="como-funciona">
           <div className="container">
             <SectionHeading
-              eyebrow="Troca sem recomeço"
-              title="Seus dados vêm com você. E nossa equipe fica ao seu lado."
+              eyebrow="Quando a informação se encontra"
+              title="Você registra uma vez. O restante deixa de se perder pelo caminho."
               description={
                 <p>
-                  Implantar um sistema novo não precisa significar recadastrar
-                  a empresa inteira ou descobrir tudo sozinho.
+                  Uma parte da empresa atualiza a próxima. Menos repetição,
+                  menos conferência e uma visão mais clara do resultado.
                 </p>
               }
             />
-            <div className="migration-grid">
-              <article>
+            <div className="home-flow__line" aria-label="Fluxo conectado da operação">
+              {connectedFlow.map(([number, title]) => (
+                <article className="home-flow__step home-reveal" key={title}>
+                  <span>{number}</span>
+                  <h3>{title}</h3>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="home-product section">
+          <div className="container">
+            <SectionHeading
+              eyebrow="O MoneySystem por dentro"
+              title="Abra o sistema e encontre respostas — não mais trabalho."
+              description={
+                <p>
+                  A tela reúne o que mudou, o que ficou pendente e o que merece
+                  uma decisão. Cada informação aparece com um motivo.
+                </p>
+              }
+            />
+            <div className="home-product__story">
+              <figure className="home-product__focus">
+                <div className="home-product__crop">
+                  <Image
+                    src="/images/dashboard-devices.png"
+                    alt="Detalhe da tela real do MoneySystem com agenda e indicadores da operação"
+                    width={962}
+                    height={698}
+                    loading="lazy"
+                    sizes="(max-width: 900px) 92vw, 58vw"
+                  />
+                </div>
+                <figcaption>Tela real do produto, sem ilustração genérica.</figcaption>
+              </figure>
+              <ol className="home-product__answers">
+                <li className="home-reveal">
+                  <span>01</span>
+                  <div>
+                    <h3>Comece o dia sabendo onde olhar.</h3>
+                    <p>
+                      Agenda, números e pendências aparecem na mesma visão.
+                    </p>
+                  </div>
+                </li>
+                <li className="home-reveal">
+                  <span>02</span>
+                  <div>
+                    <h3>Entenda a empresa sem montar relatório.</h3>
+                    <p>
+                      Financeiro, vendas e operação permanecem conectados.
+                    </p>
+                  </div>
+                </li>
+                <li className="home-reveal">
+                  <span>03</span>
+                  <div>
+                    <h3>Leve a informação com você.</h3>
+                    <p>
+                      A mesma rotina pode ser acompanhada no computador e no
+                      celular.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <section className="home-benefits section" id="recursos">
+          <div className="container">
+            <SectionHeading
+              eyebrow="O que muda na prática"
+              title="Menos dúvida no dia. Mais controle no fim do mês."
+              description={
+                <p>
+                  O MoneySystem não adiciona mais uma tarefa à sua rotina. Ele
+                  organiza o que sua empresa já faz.
+                </p>
+              }
+            />
+            <div className="home-benefits__grid">
+              {benefits.map((benefit) => (
+                <article className="home-benefit home-reveal" key={benefit.title}>
+                  <span>{benefit.number}</span>
+                  <h3>{benefit.title}</h3>
+                  <p>{benefit.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="home-migration section">
+          <div className="container">
+            <div className="home-migration__intro">
+              <p className="eyebrow">Troca sem recomeço</p>
+              <h2>Você muda de sistema. Seus dados e sua história vêm junto.</h2>
+              <p>
+                Nossa equipe prepara a mudança com você para a empresa continuar
+                trabalhando com segurança.
+              </p>
+            </div>
+            <div className="home-migration__steps">
+              <article className="home-reveal">
                 <span>01</span>
-                <h3>Uma reunião completa e sem custo</h3>
+                <h3>Conhecemos sua operação.</h3>
                 <p>
-                  Conhecemos sua rotina, apresentamos o sistema de ponta a ponta
-                  e tiramos as dúvidas antes de começar.
+                  Uma reunião completa e sem custo apresenta o sistema de ponta
+                  a ponta e responde às suas dúvidas.
                 </p>
               </article>
-              <article>
+              <article className="home-reveal">
                 <span>02</span>
-                <h3>Migração sem custo adicional</h3>
+                <h3>Levamos o que já é seu.</h3>
                 <p>
-                  Transferimos produtos, clientes e lançamentos financeiros do
-                  seu sistema antigo.
+                  Na contratação, transferimos produtos, clientes e lançamentos
+                  financeiros sem custo adicional.
                 </p>
               </article>
-              <article>
+              <article className="home-reveal">
                 <span>03</span>
-                <h3>Suporte 100% humano</h3>
+                <h3>Você fala com uma pessoa.</h3>
                 <p>
-                  Quando precisar, você fala com uma pessoa. Nosso atendimento
-                  responde em até 5 minutos.
+                  O suporte é 100% humano e responde em até 5 minutos nos canais
+                  e períodos informados pela equipe.
                 </p>
               </article>
             </div>
-            <WhatsAppCta message={HOME_WHATSAPP_MESSAGE}>
+            <WhatsAppCta
+              message={HOME_WHATSAPP_MESSAGE}
+              className="button button--primary"
+            >
               Agendar minha reunião sem custo
             </WhatsAppCta>
           </div>
         </section>
 
-        <section className="segments-section section">
-          <div className="container segments-section__grid">
+        <section className="home-segments section">
+          <div className="container home-segments__grid">
             <SectionHeading
-              eyebrow="Feito para operações diferentes"
-              title="O seu negócio tem particularidades. O sistema acompanha."
+              eyebrow="Feito para operações reais"
+              title="Sua empresa tem um jeito próprio de funcionar. O sistema acompanha."
               description={
                 <p>
-                  Empresas de produtos, serviços e distribuição não precisam
-                  trabalhar do mesmo jeito para manter a gestão em ordem.
+                  Produtos, serviços ou distribuição: a organização se adapta à
+                  rotina sem obrigar sua equipe a trabalhar de um jeito
+                  artificial.
                 </p>
               }
             />
-            <div className="segments-list">
+            <div className="home-segments__list">
               {[
                 "Automotivo",
                 "Gráficas",
@@ -404,12 +446,20 @@ export default function HomePage() {
                 "Outros segmentos",
               ].map((segment, index) =>
                 segment === "Automotivo" ? (
-                  <Link href="/solucoes/automotivo" key={segment}>
-                    <span>{segment}</span>
+                  <Link
+                    className="home-segment home-segment--featured"
+                    href="/solucoes/automotivo"
+                    key={segment}
+                  >
+                    <span>
+                      <strong>{segment}</strong>
+                      <small>Página dedicada para o setor</small>
+                    </span>
                     <ArrowIcon />
                   </Link>
                 ) : (
                   <a
+                    className="home-segment"
                     href={createWhatsAppUrl(
                       `Olá! Quero saber como o MoneySystem atende ${segment.toLowerCase()}.`,
                     )}
@@ -417,73 +467,53 @@ export default function HomePage() {
                     rel="noreferrer"
                     key={segment}
                   >
-                    <span>{segment}</span>
-                    <small>{String(index + 1).padStart(2, "0")}</small>
+                    <span>
+                      <strong>{segment}</strong>
+                      <small>Conversar sobre minha operação</small>
+                    </span>
+                    <span className="home-segment__number">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
                   </a>
                 ),
               )}
             </div>
           </div>
-        </section>
 
-        <section className="automotive-callout section">
-          <div className="container automotive-callout__inner">
-            <div>
-              <p className="eyebrow eyebrow--bright">Solução automotiva</p>
+          <div className="container home-case">
+            <div className="home-case__number">
+              <strong>35</strong>
+              <span>anos de história</span>
+            </div>
+            <div className="home-case__content">
+              <p className="eyebrow">Uma empresa real, uma mudança consciente</p>
               <h2>
-                Do orçamento à ordem de serviço. Da peça usada ao resultado no
-                caixa.
-              </h2>
-            </div>
-            <div>
-              <p>
-                Uma página dedicada para autopeças, oficinas, centros
-                automotivos, insulfilm, películas e PPF.
-              </p>
-              <Link className="button button--light" href="/solucoes/automotivo">
-                Conhecer a solução <ArrowIcon />
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        <section className="case-section section">
-          <div className="container case-section__grid">
-            <div className="case-section__index">
-              <span>35</span>
-              <p>anos de história no mercado de películas</p>
-            </div>
-            <div className="case-section__content">
-              <p className="eyebrow">História real</p>
-              <h2>
-                LunarFilm: experiência de mercado e uma nova forma de organizar
-                a gestão.
+                A LunarFilm modernizou a gestão sem ignorar a experiência
+                construída no mercado.
               </h2>
               <p>
                 Conheça a história de uma empresa consolidada que decidiu
-                modernizar a rotina com o MoneySystem, respeitando os processos
-                e o histórico construído ao longo dos anos.
+                organizar a rotina com o MoneySystem.
               </p>
               <Link
                 className="text-link"
                 href="/blog/2025-08-22-lunarfilm-35-anos-transformacao-gestao-moneysystem"
               >
-                Ler o case da LunarFilm <ArrowIcon />
+                Ler a história da LunarFilm <ArrowIcon />
               </Link>
             </div>
           </div>
         </section>
 
-        <section className="pricing-section section section--warm" id="planos">
+        <section className="pricing-section pricing-section--premium section" id="planos">
           <div className="container">
             <SectionHeading
               eyebrow="Planos claros"
-              title="Escolha pelo momento da sua operação."
+              title="Escolha pelo momento da sua empresa."
               description={
                 <p>
-                  Todos incluem reunião completa sem custo, migração gratuita
-                  de produtos, clientes e lançamentos financeiros e suporte
-                  humano em até 5 minutos.
+                  Todos incluem reunião completa sem custo, migração gratuita de
+                  produtos, clientes e lançamentos financeiros e suporte humano.
                 </p>
               }
             />
@@ -496,7 +526,7 @@ export default function HomePage() {
                   <div className="plan-card__top">
                     <div>
                       <h3>{plan.name}</h3>
-                      {plan.featured ? <span>Escolha frequente</span> : null}
+                      {plan.badge ? <span>{plan.badge}</span> : null}
                     </div>
                     {plan.mony ? <small>Inclui Mony</small> : null}
                   </div>
@@ -526,8 +556,8 @@ export default function HomePage() {
               ))}
               <article className="plan-card plan-card--custom">
                 <div>
-                  <p className="eyebrow">Customizado</p>
-                  <h3>Uma configuração própria para operações específicas.</h3>
+                  <p className="eyebrow">Projeto customizado</p>
+                  <h3>Quando a operação precisa de uma configuração própria.</h3>
                   <p>
                     Funcionalidades exclusivas, infraestrutura dedicada,
                     consultoria, transferência de dados e acompanhamento de
@@ -538,7 +568,7 @@ export default function HomePage() {
                   <strong>Sob consulta</strong>
                   <WhatsAppCta
                     message="Olá! Quero conversar sobre um projeto customizado do MoneySystem."
-                    className="button button--dark"
+                    className="button button--light"
                   >
                     Conversar sobre o projeto
                   </WhatsAppCta>
@@ -552,10 +582,10 @@ export default function HomePage() {
           <div className="container faq-section__grid">
             <SectionHeading
               eyebrow="Antes de conversar"
-              title="Respostas diretas para dúvidas comuns."
+              title="Respostas diretas. Sem letra pequena."
               description={
                 <p>
-                  Se a sua pergunta for específica, nosso atendimento humano
+                  Se sua dúvida for específica, uma pessoa da nossa equipe
                   responde em até 5 minutos.
                 </p>
               }
@@ -574,57 +604,60 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="drf-section">
-          <div className="container drf-section__inner">
-            <div>
-              <p className="eyebrow">Programa social</p>
-              <h2>DRF — organização financeira para a família.</h2>
-            </div>
+        <section className="home-final section">
+          <div className="container home-final__inner">
+            <p className="eyebrow eyebrow--bright">O próximo passo é uma conversa</p>
+            <h2>Você cuida do negócio. O MoneySystem coloca a rotina em ordem.</h2>
             <p>
-              O Demonstrativo de Resultado Familiar leva o rigor do DRE para
-              moradia, alimentação, educação e metas pessoais. Uma ferramenta
-              gratuita do programa Cada Dia Melhor, da R5 Window Film, para
-              clientes e comunidade.
-            </p>
-          </div>
-        </section>
-
-        <section className="final-cta section">
-          <div className="container final-cta__inner open-frame">
-            <p className="eyebrow eyebrow--bright">Próximo passo</p>
-            <h2>Coloque sua empresa em ordem sem começar do zero.</h2>
-            <p>
-              Conheça o sistema, tire suas dúvidas e entenda como seus dados
-              podem ser migrados.
+              Conheça o sistema, tire suas dúvidas e veja como mudar sem
+              recadastrar tudo.
             </p>
             <WhatsAppCta
               message={HOME_WHATSAPP_MESSAGE}
-              className="button button--light"
+              className="button button--light button--hero"
             >
-              Agendar uma reunião completa
+              Quero conhecer o MoneySystem
             </WhatsAppCta>
-            <small>
-              Sem custo · atendimento humano · resposta em até 5 minutos
-            </small>
+            <ul aria-label="Condições do atendimento">
+              <li>Reunião sem custo</li>
+              <li>Atendimento humano</li>
+              <li>Resposta em até 5 minutos</li>
+            </ul>
           </div>
         </section>
       </main>
       <SiteFooter />
+
       <JsonLd
         data={{
           "@context": "https://schema.org",
           "@type": "SoftwareApplication",
           name: "MoneySystem",
+          url: absoluteUrl("/"),
           applicationCategory: "BusinessApplication",
           operatingSystem: "Web",
           description:
-            "Sistema de gestão empresarial para vendas, financeiro, estoque, notas fiscais e serviços.",
+            "Sistema de gestão empresarial para organizar financeiro, estoque, vendas, notas fiscais, serviços e equipe.",
           image: absoluteUrl("/images/dashboard-devices.png"),
           offers: plans.map((plan) => ({
             "@type": "Offer",
             name: `Plano ${plan.name}`,
             priceCurrency: "BRL",
             price: plan.price.replace(/\D/g, ""),
+          })),
+        }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.answer,
+            },
           })),
         }}
       />

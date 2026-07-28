@@ -8,7 +8,6 @@ import {
 import { createWhatsAppUrl, SITE_URL } from "@/lib/site";
 
 const MAX_BODY_SIZE = 4_096;
-const MINIMUM_FILL_TIME_MS = 1_000;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1_000;
 const RATE_LIMIT_MAX_REQUESTS = 5;
 const requestBuckets = new Map<string, number[]>();
@@ -136,7 +135,6 @@ export async function POST(request: Request) {
   if (
     validation.data.website ||
     !validation.data.startedAt ||
-    elapsed < MINIMUM_FILL_TIME_MS ||
     elapsed < 0
   ) {
     return json({ ok: false, code: "BOT_DETECTED" }, 403);

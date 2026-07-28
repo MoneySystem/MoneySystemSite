@@ -13,7 +13,7 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="container site-header__inner">
-        <Logo />
+        <Logo priority />
 
         <nav className="site-header__nav" aria-label="Navegação principal">
           {NAVIGATION.map((item) => (
@@ -34,6 +34,13 @@ export function SiteHeader() {
             Falar com especialista
           </WhatsAppCta>
         </div>
+
+        <WhatsAppCta
+          message={HOME_WHATSAPP_MESSAGE}
+          className="button site-header__mobile-cta"
+        >
+          Falar agora
+        </WhatsAppCta>
 
         <details className="mobile-menu">
           <summary aria-label="Abrir menu">

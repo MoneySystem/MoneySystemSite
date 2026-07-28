@@ -98,15 +98,15 @@ describe("POST /api/leads", () => {
     expect(result.errors.whatsapp).toBeTruthy();
   });
 
-  it("bloqueia honeypot e envio rápido demais", async () => {
+  it("bloqueia honeypot e horário de início inválido", async () => {
     const honeypot = await POST(
       request({ ...validBody, website: "https://bot.example" }),
     );
-    const tooFast = await POST(
-      request({ ...validBody, startedAt: Date.now() }),
+    const invalidStartedAt = await POST(
+      request({ ...validBody, startedAt: Date.now() + 2_000 }),
     );
     expect(honeypot.status).toBe(403);
-    expect(tooFast.status).toBe(403);
+    expect(invalidStartedAt.status).toBe(403);
   });
 
   it("não aceita HTML de erro como confirmação da planilha", async () => {

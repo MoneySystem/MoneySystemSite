@@ -32,8 +32,11 @@ export function SiteFooter() {
 
         <div className="site-footer__contact">
           <p className="footer-label">Fale com uma pessoa</p>
-          <h2>Suporte 100% humano, sempre que precisar.</h2>
-          <p>Nosso atendimento responde em até 5 minutos.</p>
+          <h2>Suporte 100% humano, sem respostas genéricas.</h2>
+          <p>
+            Nosso atendimento responde em até 5 minutos nos canais e períodos
+            informados pela equipe.
+          </p>
           <WhatsAppCta
             message={HOME_WHATSAPP_MESSAGE}
             className="button button--light"

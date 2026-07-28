@@ -6,9 +6,9 @@ import { AdLeadForm } from "@/components/AdLeadForm";
 import { Logo } from "@/components/Logo";
 
 export const metadata: Metadata = {
-  title: "Coloque sua empresa em ordem",
+  title: "Organize sua empresa sem começar do zero",
   description:
-    "Fale com o MoneySystem sobre vendas, financeiro, estoque, serviços e emissão fiscal.",
+    "Conheça o MoneySystem em uma demonstração personalizada, com migração gratuita e atendimento 100% humano.",
   alternates: { canonical: "/ad" },
   robots: {
     index: false,
@@ -25,8 +25,11 @@ export default function AdPage() {
     <div className="ad-page">
       <header className="ad-header">
         <div className="container ad-header__inner">
-          <Logo />
-          <p>Atendimento 100% humano</p>
+          <Logo href={null} priority />
+          <p>
+            Empresa brasileira <span aria-hidden="true">•</span> Atendimento
+            100% humano
+          </p>
         </div>
       </header>
 
@@ -34,19 +37,17 @@ export default function AdPage() {
         <section className="ad-hero">
           <div className="container ad-hero__grid">
             <div className="ad-hero__content">
-              <p className="eyebrow eyebrow--bright">
-                Gestão empresarial sem informações espalhadas
-              </p>
-              <h1>Coloque sua empresa em ordem sem começar do zero.</h1>
+              <p className="eyebrow">Demonstração personalizada do MoneySystem</p>
+              <h1>Organize sua empresa sem perder o que você já construiu.</h1>
               <p>
-                O MoneySystem reúne vendas, financeiro, estoque, serviços e
-                notas fiscais. Ao contratar, migramos gratuitamente seus
-                produtos, clientes e lançamentos financeiros.
+                Veja como colocar a rotina no lugar, entender o que realmente
+                sobra e trabalhar com menos conferência. Na contratação, seus
+                principais dados vêm com você.
               </p>
-              <ul>
+              <ul aria-label="Diferenciais da conversa">
                 <li>Reunião completa e sem custo</li>
-                <li>Migração gratuita</li>
-                <li>Atendimento humano em até 5 minutos</li>
+                <li>Migração sem custo adicional</li>
+                <li>Resposta humana em até 5 minutos</li>
               </ul>
             </div>
 
@@ -54,37 +55,60 @@ export default function AdPage() {
               <AdLeadForm />
             </div>
 
-            <figure className="ad-product open-frame">
+            <figure className="ad-product">
+              <div className="ad-product__top">
+                <span>
+                  <i aria-hidden="true" />
+                  Tela real do sistema
+                </span>
+                <span>Web + celular</span>
+              </div>
               <Image
                 src="/images/dashboard-devices.png"
-                alt="Tela real do MoneySystem em notebook e celular"
+                alt="MoneySystem aberto em notebook e celular, com a visão geral da operação"
                 width={962}
                 height={698}
-                loading="eager"
+                preload
                 sizes="(max-width: 900px) 92vw, 50vw"
               />
-              <figcaption>Tela real do MoneySystem</figcaption>
+              <figcaption>
+                Você acompanha a empresa no computador e no celular.
+              </figcaption>
             </figure>
           </div>
         </section>
 
         <section className="ad-results">
-          <div className="container ad-results__grid">
-            <article>
-              <span>01</span>
-              <h2>Saiba como a empresa está.</h2>
-              <p>Acompanhe números e pendências em um só lugar.</p>
-            </article>
-            <article>
-              <span>02</span>
-              <h2>Organize a rotina.</h2>
-              <p>Conecte vendas, estoque, serviços e financeiro.</p>
-            </article>
-            <article>
-              <span>03</span>
-              <h2>Mude sem recadastrar tudo.</h2>
-              <p>Leve seus principais cadastros e lançamentos.</p>
-            </article>
+          <div className="container">
+            <div className="ad-results__heading">
+              <p className="eyebrow">Uma conversa direta sobre sua empresa</p>
+              <h2>Você entende o que muda antes de tomar uma decisão.</h2>
+            </div>
+            <div className="ad-results__grid">
+              <article>
+                <span>01</span>
+                <h3>Veja quanto realmente sobra.</h3>
+                <p>Financeiro e resultado deixam de depender de planilhas.</p>
+              </article>
+              <article>
+                <span>02</span>
+                <h3>Antecipe o que pede atenção.</h3>
+                <p>Estoque, cobranças e pendências ficam visíveis.</p>
+              </article>
+              <article>
+                <span>03</span>
+                <h3>Mude sem recadastrar tudo.</h3>
+                <p>
+                  Produtos, clientes e lançamentos financeiros podem ser
+                  transferidos.
+                </p>
+              </article>
+              <article>
+                <span>04</span>
+                <h3>Fale com uma pessoa de verdade.</h3>
+                <p>Sem robôs e sem resposta genérica sobre sua operação.</p>
+              </article>
+            </div>
           </div>
         </section>
       </main>
