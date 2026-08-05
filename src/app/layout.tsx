@@ -1,7 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Sans } from "next/font/google";
+import Script from "next/script";
 
 import { JsonLd } from "@/components/JsonLd";
+import { MetaPixel } from "@/components/MetaPixel";
+import { META_PIXEL_ID } from "@/lib/meta-pixel";
 import { siteEntityGraph } from "@/lib/schema";
 import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/site";
 
@@ -12,6 +15,17 @@ const instrumentSans = Instrument_Sans({
   variable: "--font-instrument-sans",
   display: "swap",
 });
+
+const metaPixelScript = `!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '${META_PIXEL_ID}');
+fbq('track', 'PageView');`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -87,6 +101,12 @@ export default function RootLayout({
           Pular para o conteúdo
         </a>
         {children}
+        <Script
+          id="meta-pixel"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{ __html: metaPixelScript }}
+        />
+        <MetaPixel />
         <JsonLd data={siteEntityGraph()} />
       </body>
     </html>

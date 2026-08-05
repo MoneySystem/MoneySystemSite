@@ -9,6 +9,7 @@ import {
 } from "react";
 
 import { normalizeBrazilianWhatsApp } from "@/lib/lead";
+import { trackMetaEvent } from "@/lib/meta-pixel";
 
 declare global {
   interface Window {
@@ -180,6 +181,7 @@ export function AdLeadForm() {
         | {
             ok?: boolean;
             whatsappUrl?: string;
+            leadId?: string;
             errors?: FieldErrors;
           }
         | null;
@@ -205,6 +207,14 @@ export function AdLeadForm() {
       }
 
       setSuccessUrl(result.whatsappUrl);
+      trackMetaEvent(
+        "Lead",
+        {
+          content_name: "Demonstração personalizada",
+          content_category: "Página de anúncios",
+        },
+        result.leadId,
+      );
       setStatus("success");
       navigateAfterAnalytics(result.whatsappUrl);
     } catch {

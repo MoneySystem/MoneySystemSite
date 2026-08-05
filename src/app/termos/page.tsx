@@ -287,11 +287,13 @@ export default function TermsPage() {
               <p>
                 O formulário comercial utiliza infraestrutura da Vercel para o
                 site, Google Sheets/Apps Script para registrar o contato e
-                WhatsApp para continuar a conversa. Ao seguir para serviços de
-                terceiros, também se aplicam os termos e políticas desses
-                provedores. Alguns tratamentos podem envolver infraestrutura
-                localizada fora do Brasil, com salvaguardas compatíveis com a
-                legislação.
+                WhatsApp para continuar a conversa. Para medir a efetividade
+                de campanhas, podemos utilizar as ferramentas da Meta, como o
+                Pixel e a API de Conversões, sem enviar nome ou telefone pelo
+                navegador. Ao seguir para serviços de terceiros, também se
+                aplicam os termos e políticas desses provedores. Alguns
+                tratamentos podem envolver infraestrutura localizada fora do
+                Brasil, com salvaguardas compatíveis com a legislação.
               </p>
             </section>
 
