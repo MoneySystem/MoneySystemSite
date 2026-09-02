@@ -6,6 +6,7 @@ import {
   validateLeadInput,
 } from "@/lib/lead";
 import { createWhatsAppUrl, SITE_URL } from "@/lib/site";
+import { scheduleOpenAIAdsLeadEvent } from "@/server/openai-ads-capi";
 
 const MAX_BODY_SIZE = 4_096;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1_000;
@@ -199,6 +200,20 @@ export async function POST(request: Request) {
     nome: validation.data.nome,
     possuiFiliais: validation.data.possuiFiliais,
     desejaEmitirNota: validation.data.desejaEmitirNota,
+  });
+
+  scheduleOpenAIAdsLeadEvent({
+    eventId: validation.data.submissionId,
+    name: validation.data.nome,
+    phoneNumber: validation.data.whatsappInternational,
+    sourceUrl: validation.data.attribution.landing_url,
+    requestOrigin: request.headers.get("origin") ?? undefined,
+    cookieHeader: request.headers.get("cookie") ?? undefined,
+    ipAddress:
+      request.headers.get("x-real-ip") ??
+      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim(),
+    userAgent: request.headers.get("user-agent") ?? undefined,
+    timestampMs: Date.now(),
   });
 
   return json(

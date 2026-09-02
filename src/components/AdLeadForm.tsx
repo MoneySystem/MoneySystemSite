@@ -10,6 +10,7 @@ import {
 
 import { normalizeBrazilianWhatsApp } from "@/lib/lead";
 import { trackMetaEvent } from "@/lib/meta-pixel";
+import { trackOpenAIAdsEvent } from "@/lib/openai-ads-pixel";
 
 declare global {
   interface Window {
@@ -215,6 +216,11 @@ export function AdLeadForm() {
         },
         result.leadId,
       );
+      trackOpenAIAdsEvent(
+        "lead_created",
+        { type: "customer_action" },
+        result.leadId,
+      );
       setStatus("success");
       navigateAfterAnalytics(result.whatsappUrl);
     } catch {
@@ -248,14 +254,19 @@ export function AdLeadForm() {
   }
 
   return (
-    <form className="lead-form" onSubmit={handleSubmit} noValidate>
+    <form
+      className="lead-form"
+      id="lead-form"
+      onSubmit={handleSubmit}
+      noValidate
+    >
       <div className="lead-form__heading">
         <div className="lead-form__step">
           <span>4 respostas rápidas</span>
           <span>Reunião sem custo</span>
         </div>
-        <p className="eyebrow">Uma conversa sobre a sua operação</p>
-        <h2>Veja o MoneySystem na sua empresa.</h2>
+        <p className="eyebrow">Uma conversa sobre o seu negócio automotivo</p>
+        <h2>Veja o MoneySystem na sua operação.</h2>
         <p>
           Preencha os campos abaixo. Depois do envio, você segue para o WhatsApp
           e fala com uma pessoa da nossa equipe.

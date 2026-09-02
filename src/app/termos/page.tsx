@@ -58,7 +58,7 @@ export default function TermsPage() {
               Este documento explica as regras de uso do MoneySystem e como
               tratamos dados pessoais em nossos canais e serviços.
             </p>
-            <small>Última atualização: 28 de julho de 2026.</small>
+            <small>Última atualização: 2 de setembro de 2026.</small>
           </div>
         </header>
 
@@ -226,8 +226,9 @@ export default function TermsPage() {
                 <li>configurar, proteger e melhorar a plataforma;</li>
                 <li>cumprir obrigações legais e prevenir fraude ou abuso;</li>
                 <li>
-                  medir a origem e a efetividade de campanhas sem enviar nome ou
-                  telefone às ferramentas de análise.
+                  medir a origem e a efetividade de campanhas, com minimização
+                  de dados e proteção dos identificadores utilizados para
+                  correspondência.
                 </li>
               </ul>
 
@@ -288,12 +289,17 @@ export default function TermsPage() {
                 O formulário comercial utiliza infraestrutura da Vercel para o
                 site, Google Sheets/Apps Script para registrar o contato e
                 WhatsApp para continuar a conversa. Para medir a efetividade
-                de campanhas, podemos utilizar as ferramentas da Meta, como o
-                Pixel e a API de Conversões, sem enviar nome ou telefone pelo
-                navegador. Ao seguir para serviços de terceiros, também se
-                aplicam os termos e políticas desses provedores. Alguns
-                tratamentos podem envolver infraestrutura localizada fora do
-                Brasil, com salvaguardas compatíveis com a legislação.
+                de campanhas, podemos utilizar as ferramentas da Meta e do
+                OpenAI Ads, como pixels de medição e APIs de conversão. Nossa
+                implementação não envia nome ou telefone em texto aberto pelo
+                navegador. Quando esses dados são utilizados pelo servidor para
+                correspondência de conversões, são normalizados e enviados
+                apenas como hashes criptográficos, junto a dados técnicos e
+                identificadores de atribuição quando disponíveis. Ao seguir
+                para serviços de terceiros, também se aplicam os termos e
+                políticas desses provedores. Alguns tratamentos podem envolver
+                infraestrutura localizada fora do Brasil, com salvaguardas
+                compatíveis com a legislação.
               </p>
             </section>
 

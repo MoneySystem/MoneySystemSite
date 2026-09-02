@@ -28,8 +28,12 @@ Abra `http://localhost:3000`.
 | `WHATSAPP_NUMBER` | servidor | destino comercial, no formato `5548988745520` |
 | `GOOGLE_APPS_SCRIPT_SECRET` | servidor, opcional | segredo compartilhado com o Apps Script aprimorado |
 | `NEXT_PUBLIC_SITE_URL` | público | domínio canônico, sitemap e validação de origem |
+| `OPENAI_ADS_PIXEL_ID` | servidor + HTML | Pixel ID usado pelo Pixel e pela CAPI |
+| `OPENAI_ADS_CONVERSIONS_API_KEY` | servidor | chave secreta da Conversions API |
+| `OPENAI_ADS_VALIDATE_ONLY` | servidor | `true` valida sem registrar; produção deve usar `false` |
 
-Nunca prefixe a URL do Apps Script ou o segredo com `NEXT_PUBLIC_`.
+Nunca prefixe a URL do Apps Script, os segredos ou a chave da CAPI com
+`NEXT_PUBLIC_`.
 
 ## Fluxo da landing `/ad`
 
@@ -39,7 +43,9 @@ Nunca prefixe a URL do Apps Script ou o segredo com `NEXT_PUBLIC_`.
    preenchimento.
 4. O servidor envia o lead ao Google Apps Script.
 5. Somente após `{ "ok": true }` da planilha, a API devolve a URL do WhatsApp.
-6. A mesma aba segue automaticamente para a conversa. Não existe `/obrigado`.
+6. O sucesso dispara `lead_created` no OpenAI Ads Pixel e agenda o mesmo evento
+   na Conversions API, ambos com o `submissionId` como ID para deduplicação.
+7. A mesma aba segue automaticamente para a conversa. Não existe `/obrigado`.
 
 O contrato das oito primeiras colunas da planilha foi preservado. O arquivo
 [`integrations/google-apps-script/Code.gs`](integrations/google-apps-script/Code.gs)
@@ -86,12 +92,17 @@ npm run check
 ## Publicação na Vercel
 
 1. Importe este repositório como projeto Next.js.
-2. Configure as três variáveis necessárias e, se usar a versão aprimorada do
-   Apps Script, também `GOOGLE_APPS_SCRIPT_SECRET`.
+2. Configure as variáveis necessárias e, se usar a versão aprimorada do Apps
+   Script, também `GOOGLE_APPS_SCRIPT_SECRET`.
 3. Rode um deployment de Preview.
 4. Teste o fluxo com um lead canário claramente identificado.
 5. Confirme que apenas uma linha foi criada na planilha e que o WhatsApp abriu.
 6. Promova exatamente o mesmo deployment para produção.
+
+O guia de lançamento do OpenAI Ads está em
+[`docs/openai-ads-launch.md`](docs/openai-ads-launch.md). A chave da CAPI deve
+ser criada no Ads Manager e cadastrada somente como variável de servidor na
+Vercel. O código não contém nem registra essa chave em logs.
 
 No Firewall da Vercel, configure também um limite de `5` requisições `POST` a
 `/api/leads` a cada `10 minutos` por IP. O limite em memória da aplicação é uma

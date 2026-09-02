@@ -4,6 +4,7 @@ import Script from "next/script";
 
 import { JsonLd } from "@/components/JsonLd";
 import { MetaPixel } from "@/components/MetaPixel";
+import { OpenAIAdsPixel } from "@/components/OpenAIAdsPixel";
 import { META_PIXEL_ID } from "@/lib/meta-pixel";
 import { siteEntityGraph } from "@/lib/schema";
 import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/site";
@@ -26,6 +27,33 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '${META_PIXEL_ID}');
 fbq('track', 'PageView');`;
+
+const rawOpenAIAdsPixelId = process.env.OPENAI_ADS_PIXEL_ID?.trim() ?? "";
+const openAIAdsPixelId = /^[A-Za-z0-9_-]{1,128}$/.test(rawOpenAIAdsPixelId)
+  ? rawOpenAIAdsPixelId
+  : null;
+const openAIAdsPixelScript = openAIAdsPixelId
+  ? `(function (w, d, s, u) {
+  if (w.oaiq) return;
+  var q = function () { q.q.push(arguments); };
+  q.q = [];
+  w.oaiq = q;
+  var js = d.createElement(s);
+  js.async = true;
+  js.src = u;
+  var f = d.getElementsByTagName(s)[0];
+  f.parentNode.insertBefore(js, f);
+})(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
+oaiq("init", { pixelId: ${JSON.stringify(openAIAdsPixelId)} });
+oaiq("measure", "page_viewed", {
+  type: "contents",
+  contents: [{
+    id: window.location.pathname,
+    name: window.location.pathname,
+    content_type: "page"
+  }]
+});`
+  : null;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -100,6 +128,13 @@ export default function RootLayout({
         <a className="skip-link" href="#conteudo">
           Pular para o conteúdo
         </a>
+        {openAIAdsPixelScript ? (
+          <Script
+            id="openai-ads-pixel"
+            strategy="beforeInteractive"
+            dangerouslySetInnerHTML={{ __html: openAIAdsPixelScript }}
+          />
+        ) : null}
         {children}
         <Script
           id="meta-pixel"
@@ -107,6 +142,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: metaPixelScript }}
         />
         <MetaPixel />
+        <OpenAIAdsPixel />
         <JsonLd data={siteEntityGraph()} />
       </body>
     </html>
