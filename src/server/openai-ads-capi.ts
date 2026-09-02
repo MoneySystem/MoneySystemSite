@@ -3,6 +3,7 @@ import { isIP } from "node:net";
 
 import { after } from "next/server";
 
+import { getOpenAIAdsPixelId } from "@/lib/openai-ads-config";
 import { SITE_URL } from "@/lib/site";
 
 const OPENAI_ADS_ENDPOINT = "https://bzr.openai.com/v1/events";
@@ -149,10 +150,10 @@ export function buildOpenAIAdsLeadEvent(input: OpenAIAdsLeadInput) {
 }
 
 function getOpenAIAdsConfig(): OpenAIAdsConfig | null {
-  const pixelId = process.env.OPENAI_ADS_PIXEL_ID?.trim();
+  const pixelId = getOpenAIAdsPixelId();
   const apiKey = process.env.OPENAI_ADS_CONVERSIONS_API_KEY?.trim();
 
-  if (!pixelId || !apiKey) return null;
+  if (!apiKey) return null;
 
   return {
     pixelId,

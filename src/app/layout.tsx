@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { MetaPixel } from "@/components/MetaPixel";
 import { OpenAIAdsPixel } from "@/components/OpenAIAdsPixel";
 import { META_PIXEL_ID } from "@/lib/meta-pixel";
+import { getOpenAIAdsPixelId } from "@/lib/openai-ads-config";
 import { siteEntityGraph } from "@/lib/schema";
 import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/site";
 
@@ -28,12 +29,8 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '${META_PIXEL_ID}');
 fbq('track', 'PageView');`;
 
-const rawOpenAIAdsPixelId = process.env.OPENAI_ADS_PIXEL_ID?.trim() ?? "";
-const openAIAdsPixelId = /^[A-Za-z0-9_-]{1,128}$/.test(rawOpenAIAdsPixelId)
-  ? rawOpenAIAdsPixelId
-  : null;
-const openAIAdsPixelScript = openAIAdsPixelId
-  ? `(function (w, d, s, u) {
+const openAIAdsPixelId = getOpenAIAdsPixelId();
+const openAIAdsPixelScript = `(function (w, d, s, u) {
   if (w.oaiq) return;
   var q = function () { q.q.push(arguments); };
   q.q = [];
@@ -52,8 +49,7 @@ oaiq("measure", "page_viewed", {
     name: window.location.pathname,
     content_type: "page"
   }]
-});`
-  : null;
+});`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -128,13 +124,11 @@ export default function RootLayout({
         <a className="skip-link" href="#conteudo">
           Pular para o conteúdo
         </a>
-        {openAIAdsPixelScript ? (
-          <Script
-            id="openai-ads-pixel"
-            strategy="beforeInteractive"
-            dangerouslySetInnerHTML={{ __html: openAIAdsPixelScript }}
-          />
-        ) : null}
+        <Script
+          id="openai-ads-pixel"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: openAIAdsPixelScript }}
+        />
         {children}
         <Script
           id="meta-pixel"

@@ -28,7 +28,7 @@ Abra `http://localhost:3000`.
 | `WHATSAPP_NUMBER` | servidor | destino comercial, no formato `5548988745520` |
 | `GOOGLE_APPS_SCRIPT_SECRET` | servidor, opcional | segredo compartilhado com o Apps Script aprimorado |
 | `NEXT_PUBLIC_SITE_URL` | público | domínio canônico, sitemap e validação de origem |
-| `OPENAI_ADS_PIXEL_ID` | servidor + HTML | Pixel ID usado pelo Pixel e pela CAPI |
+| `OPENAI_ADS_PIXEL_ID` | servidor + HTML, opcional | substitui o Pixel ID padrão usado pelo Pixel e pela CAPI |
 | `OPENAI_ADS_CONVERSIONS_API_KEY` | servidor | chave secreta da Conversions API |
 | `OPENAI_ADS_VALIDATE_ONLY` | servidor | `true` valida sem registrar; produção deve usar `false` |
 
